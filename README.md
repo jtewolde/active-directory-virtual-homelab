@@ -1,5 +1,6 @@
 ## Active Directory Virtual Home Lab
 This GitHub repo is to demonstrate and show my journey on learning Microsoft's **Active Directory** system used in **IT Help Desk** and **Support Roles**.  
+
 I’m using **Windows Server 2022** and **Windows 11** virtual machines inside **VirtualBox** to simulate a small business network and practice real-world IT administration skills.
 
 ---
