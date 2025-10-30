@@ -26,9 +26,10 @@ This homelab project will cover:
 | 2025-10-27 | Creating Local Admin Account | Opened AD and created an Organizational Unit for Admins and created new Admin account. Restarted VM and logged in successfully under that admin account |
 
 ## Tools Used
-- Oracle VirtualBox
-- Windows Server 2022 Standard (Desktop Experience)
-- Windows 11 Enterprise
+- Oracle VirtualBox - https://www.virtualbox.org/wiki/Downloads
+- Windows Server 2022 Standard (Desktop Experience) - https://go.microsoft.com/fwlink/p/?linkid=2195686&clcid=0x409&culture=en-us&country=us
+- Windows 11 Enterprise - https://go.microsoft.com/fwlink/p/?linkid=2195682&clcid=0x409&culture=en-us&country=us
 - PowerShell
 - Active Directory Domain Services (AD DS)
+- Remote Access
 - DNS & DHCP
