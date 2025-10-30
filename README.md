@@ -24,3 +24,11 @@ This homelab project will cover:
 | 2025-10-24 | Active Directory Installiation | Installed Active Directory Domain Services to Server 2022 for promoting server to Domain Controller. Named domain to jotewodomain.com |
 | 2025-10-25 | New User Creation | Opened Active Directory Users and Computers application, practiced creating new user account by adding all information like name, creating password, etc |
 | 2025-10-27 | Creating Local Admin Account | Opened AD and created an Organizational Unit for Admins and created new Admin account. Restarted VM and logged in successfully under that admin account |
+
+## Tools Used
+- Oracle VirtualBox
+- Windows Server 2022 Standard (Desktop Experience)
+- Windows 11 Enterprise
+- PowerShell
+- Active Directory Domain Services (AD DS)
+- DNS & DHCP
