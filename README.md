@@ -1,7 +1,8 @@
 ## Active Directory Virtual Home Lab
-This GitHub repo is to demonstrate and show my journey on learning Microsoft's **Active Directory** system used in **IT Help Desk** and **Support Roles**.  
+This GitHub repo is to demonstrate and show my journey on learning Microsoft's **Active Directory** system used in **IT Help Desk** and **Support Roles**. I’m using **Windows Server 2022** and **Windows 11** virtual machines inside **VirtualBox** to simulate a small business network and practice real-world IT administration skills.
 
-I’m using **Windows Server 2022** and **Windows 11** virtual machines inside **VirtualBox** to simulate a small business network and practice real-world IT administration skills.
+## Network Diagram
+Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine 
 
 ---
 
@@ -11,7 +12,7 @@ This homelab project will cover:
   - Installing and configuring **Windows Server 2022**
   - Setting up **Active Directory Domain Services (AD DS)**
   - Creating and managing **users, groups, and organizational units**
-  - 
+
   - Configuring **DNS**, **DHCP**, and **Remote Acess**
   - Applying **Group Policy Objects (GPOs)**
   - Joining a **Windows 11 client** to the domain
