@@ -1,10 +1,11 @@
-## Active Directory Virtual Home Lab
+# Active Directory Virtual Home Lab
 This GitHub repo is to demonstrate and show my journey on learning Microsoft's **Active Directory** system used in **IT Help Desk** and **Support Roles**. I’m using **Windows Server 2022** and **Windows 11** virtual machines inside **VirtualBox** to simulate a small business network and practice real-world IT administration skills.
 
+
 ## Network Diagram
+
 Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine 
 ![active-directory-diagram](active_directory_diagram.jpg)
----
 
 ## Lab Overview:
 
@@ -30,9 +31,9 @@ This homelab project will cover:
 | 2025-10-29 | Remote Access Configuration | Installed Remote Access on Server in order for client machines within the internal network to have access to the internet with NAT |
 
 ## Tools Used
-- Oracle VirtualBox - https://www.virtualbox.org/wiki/Downloads
-- Windows Server 2022 Standard (Desktop Experience) - https://go.microsoft.com/fwlink/p/?linkid=2195686&clcid=0x409&culture=en-us&country=us
-- Windows 11 Enterprise - https://go.microsoft.com/fwlink/p/?linkid=2195682&clcid=0x409&culture=en-us&country=us
+- [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Windows Server 2022 Standard (Desktop Experience)](https://go.microsoft.com/fwlink/p/?linkid=2195686&clcid=0x409&culture=en-us&country=us)
+- [Windows 11 Enterprise](https://go.microsoft.com/fwlink/p/?linkid=2195682&clcid=0x409&culture=en-us&country=us)
 - PowerShell
 - Active Directory Domain Services (AD DS)
 - Remote Access
