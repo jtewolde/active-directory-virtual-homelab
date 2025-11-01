@@ -4,7 +4,8 @@ This GitHub repo is to demonstrate and show my journey on learning Microsoft's *
 
 ## Network Diagram
 
-Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine 
+Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine
+
 ![active-directory-diagram](active_directory_diagram.jpg)
 
 ## Lab Overview:
