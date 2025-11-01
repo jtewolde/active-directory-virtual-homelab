@@ -29,6 +29,7 @@ This homelab project will cover:
 | 2025-10-25 | New User Creation | Opened Active Directory Users and Computers application, practiced creating new user account by adding all information like name, creating password, etc |
 | 2025-10-27 | Creating Local Admin Account | Opened AD and created an Organizational Unit for Admins and created new Admin account. Restarted VM and logged in successfully under that admin account |
 | 2025-10-29 | Remote Access Configuration | Installed Remote Access on Server in order for client machines within the internal network to have access to the internet with NAT |
+| 2025-10-31 | DHCP Server Configuration | Installed DHCP on Domain Controller for creating a DHCP Scope where it assigns IP addresses to client machines inside the Internal Network using subnetting. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
