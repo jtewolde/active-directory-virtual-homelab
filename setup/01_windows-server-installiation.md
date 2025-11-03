@@ -45,4 +45,23 @@ First, you will have to download the following software needed to conduct this v
 ![Screenshot](/setup/images/Setup6.png)
 
 ### Start Windows Server 2022 Virtual Machine
-- 
+- Click on the newly created Server 2022 VM and boot it up.
+- Proceed through the installation by selecting options like Language to Install, Time, etc
+- For the selection of the Operating System > Select **Windows Server 2022 Standard Desktop Experience**
+- Select **Custom Install** for the type of installation.
+- Wait for the installation to fully complete. It should take a few minutes.
+- Once the installation is complete, set a secure password for the Administrator account.
+![Screenshot](/setup/images/Setup7.png)
+
+### Step 3 - Configure Network Adapters
+- First, toggle the 'CTRL + ALT + DELETE' action on your VM to unlock it by going to **'Input > Keyboard'** option on your VM and select **Insert CTRL + ALT + Del** to unlock the login in form.
+![Screenshot](/setup/images/Setup8.png)
+- Enter the password that you assigned previously for the local adminstrator account to sign in!
+
+## ✅ Summary
+At this stage, the Windows Server 2022 Virtual Machine is successfully installed and operational within VirtualBox.  
+This VM will serve as the **Domain Controller (DC)** for the Active Directory lab.
+
+Next, we’ll move on to **configuring the network interfaces** to ensure proper communication between the domain controller and client machines.
+
+➡️ Continue to: [Network Configuration](./02-network-configuration.md)
