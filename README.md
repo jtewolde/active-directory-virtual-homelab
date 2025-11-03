@@ -4,7 +4,8 @@ This GitHub repo is to demonstrate and show my journey on learning Microsoft's *
 
 ## Network Diagram
 
-Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine 
+Here is a visualization of what is happening in this Active Directory home lab and the connections between the Domain Controller to the Windows Client Machine
+
 ![active-directory-diagram](active_directory_diagram.jpg)
 
 ## Lab Overview:
@@ -27,8 +28,9 @@ This homelab project will cover:
 | 2025-10-22  | Domain Configuration | Configured Windows Server 22 VM to use Active Directory server's IP Address as its DNS server to connect client and DC VMs together |
 | 2025-10-24 | Active Directory Installiation | Installed Active Directory Domain Services to Server 2022 for promoting server to Domain Controller. Named domain to jotewodomain.com |
 | 2025-10-25 | New User Creation | Opened Active Directory Users and Computers application, practiced creating new user account by adding all information like name, creating password, etc |
-| 2025-10-27 | Creating Local Admin Account | Opened AD and created an Organizational Unit for Admins and created new Admin account. Restarted VM and logged in successfully under that admin account |
+| 2025-10-27 | Creating Local Admin Account | Created an Organizational Unit (OU) for Admins and added a new Admin account with appropriate permissions. Tested login under the new admin credentials successfully. |
 | 2025-10-29 | Remote Access Configuration | Installed Remote Access on Server in order for client machines within the internal network to have access to the internet with NAT |
+| 2025-10-31 | DHCP Server Configuration | Installed and configured the DHCP role on the Domain Controller to automatically assign IP addresses within the internal network via a defined DHCP Scope and subnet. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
