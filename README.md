@@ -32,6 +32,7 @@ This homelab project will cover:
 | 2025-10-29 | Remote Access Configuration | Installed Remote Access on Server in order for client machines within the internal network to have access to the internet with NAT |
 | 2025-10-31 | DHCP Server Configuration | Installed and configured the DHCP role on the Domain Controller to automatically assign IP addresses within the internal network via a defined DHCP Scope and subnet. |
 | 2025-11-02 | PowerShell AD Automation | Ran a PowerShell script from Josh Madakor’s AD Homelab tutorial that automatically created hundreds of random user accounts within a specific Organizational Unit in Active Directory to simulate a real-world enterprise environment. |
+| 2025-11-06 | Windows 10 Client Installation | Installed Windows 10 Pro VM for Client after dealing with issues with Windows 11 OS. Created local user account. Added router to DHCP Server on Domain Controller to connect with client VM |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
