@@ -35,6 +35,9 @@ This homelab project will cover:
 | 2025-11-06 | Windows 10 Client Installation | Installed Windows 10 Pro VM for Client after dealing with issues with Windows 11 OS. Created local user account. Added router to DHCP Server on Domain Controller to connect with client VM |
 | 2025-11-07 | Account Management Testing | Tested enabling and disabling user accounts on the Windows 10 client VM through Active Directory Users and Computers to simulate real-world account management scenarios. Verified that disabled accounts were unable to log in and re-enabled accounts regained access successfully. |
 | 2025-11-09 | Group Policy Configuration | Created and tested common Group Policy Objects (GPOs) such as password complexity, account lockout policies, and disabling Command Prompt for standard users to strengthen security and practice centralized policy management. |
+| 2025-11-11 | Group Policy Testing | Tested enforced GPOs such as account lockout and restrictions on Control Panel and Command Prompt access for client users. Additionally, practiced unlocking a locked-out user account through Active Directory Users and Computers to simulate real-world account recovery procedures. |
+
+
 
 
 ## Tools Used
