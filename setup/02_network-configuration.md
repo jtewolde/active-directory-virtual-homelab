@@ -4,7 +4,6 @@
 In this section, I configured the network settings for the Windows Server 2022 Domain Controller to allow proper communication between the internal network (for client machines) and the external network (for internet access).
 
 ## Goal:
-
 The goal of this section of the the homelab is to:
 - The Domain Controller is assigned a **Static** IP Address.
 - Client VMs can communicate with the DC through the **Internal Network**.
