@@ -38,3 +38,17 @@ In this section, I will set up **Active Directory Domain Services (AD DS)** on t
 6. You will be instructed that the server will need to restart. When it boots back up and try to login in, it will show your domain/admin name.
 
 ![ActiveDirectory](./images/Active2.png)
+
+## Step 3: Create Organizational Units(OU) for Admins and Users
+
+Now that the **Domain Controller** is fully configured, the next step is to organize Active Directory by creating a dedicated Admins OU and create a new Admin User inside of it. 
+
+1. Open **Server Manager** > Click **Tools**(top-right) > Select **Active Directory Users and Computers**
+2. On the left side panel, right-click on your domain > Hover over **New** > Select **Organizational Unit**. Name the organizational unit, **_ADMINS**. This OU will store and manage all adminstrative accounts.
+3. Create another organization unit for users, name the OU, **_USERS**.
+
+![ActiveDirectory](./images/Active3.png)
+
+## Step 4: Create Admin and User Account
+1. Start by right-clicking 
+
