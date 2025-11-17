@@ -47,8 +47,47 @@ Now that the **Domain Controller** is fully configured, the next step is to orga
 2. On the left side panel, right-click on your domain > Hover over **New** > Select **Organizational Unit**. Name the organizational unit, **_ADMINS**. This OU will store and manage all adminstrative accounts.
 3. Create another organization unit for users, name the OU, **_USERS**.
 
-![ActiveDirectory](./images/Active3.png)
+![ActiveDirectory](./screen-recordings/Active4.gif)
 
 ## Step 4: Create Admin and User Account
-1. Start by right-clicking 
+1. Start by right-clicking the newly created **Admins** OU.
+2. Go down to **New** > Select **User** for creating a new admin user.
+3. Enter necessary details such as:
+    - **First Name**: "Test"
+    - **Last Name**: "Admin"
+    - **User Logon Name**: "tadmin"
+4. Click **'Next'** to proceed with setting a password for the account.
+5. Uncheck the **'User must change password at next logon'** option and check **'Password Never Expires'** for testing purposes.
+6. Set a password that you can easily remember for testing purposes with this homelab. In reality, you would set a strong password.
+7. Click **'Finish'** to finalize creating the admin account.
 
+Now, you should see your newly created admin account inside of the **Admins** Organizational Unit!
+
+For creating the User account, you will follow the same steps above but just create the user inside your **'Users'** Organizational Unit instead!
+
+## Step 5: Assign Domain Admin Permissions
+
+The final step of this setting up your created Admin account is assigning **Domain Admin Permissions**.
+
+1. Start by right-clicking on your admin account in the **'Admins'** OU > Select **'Properties'**.
+2. Select the **'Member Of''** Tab near the top of the window > Click **'Add'**.
+3. Inside the **'Enter Object Names'** field, type in **"Domain Admins"** > Click **"Check Names"** on the right on the field > Click **Ok**.
+
+Now, your new account will have full domain administrative privileges!
+
+To test it out, sign out and log back in with the new account, you should have access to Active Directory like before!
+
+![ActiveDirectory](./screen-recordings/Active6.gif)
+
+---
+
+## Summary:
+At this point, the Domain Controller is fully configured with:
+- Active Directory Domain Services installed
+- A functioning domain
+- A structured Organizational Unit
+- A privileged Domain admin account
+
+This completes the Active Directory setup section of the homelab. The next steps will involve configuring DHCP, DNS (if needed), joining client machines, and implementing Group Policy Objects.
+
+➡️ Continue to: [Remote Access and DHCP Server Setup](./04_remote-access-DHCP-setup.md)
