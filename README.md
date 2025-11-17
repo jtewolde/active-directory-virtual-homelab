@@ -36,6 +36,8 @@ This homelab project will cover:
 | 2025-11-07 | Account Management Testing | Tested enabling and disabling user accounts on the Windows 10 client VM through Active Directory Users and Computers to simulate real-world account management scenarios. Verified that disabled accounts were unable to log in and re-enabled accounts regained access successfully. |
 | 2025-11-09 | Group Policy Configuration | Created and tested common Group Policy Objects (GPOs) such as password complexity, account lockout policies, and disabling Command Prompt for standard users to strengthen security and practice centralized policy management. |
 | 2025-11-11 | Group Policy Testing | Tested enforced GPOs such as account lockout and restrictions on Control Panel and Command Prompt access for client users. Additionally, practiced unlocking a locked-out user account through Active Directory Users and Computers to simulate real-world account recovery procedures. |
+| 2025-11-15 | File Sharing & Permissions | Created a shared folder in Server Manager and configured file-share permissions. Set up department-based security groups (e.g., HR, Front Desk) and assigned users to each group to test access control. Verified that only authorized groups could access specific folders and practiced mapping the shared folder as a network drive on the client machine. |
+
 
 
 
