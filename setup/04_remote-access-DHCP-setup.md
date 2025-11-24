@@ -65,4 +65,21 @@ These values for the start and end IP addresses with the subnet mask indicate th
 
 Now, you should see the scope that you created is **Active** and appears under the IPv4 option!
 
+![DHCP_IP](./images/DHCP3.png)
 
+
+## Summary
+
+At this point, the **Domain Controller** is fully configured to act as a router and DHCP server for the internal network. Your Windows 11 clients will now:
+
+- Automatically receive IP addressing
+
+- Receive DNS information pointing to the Domain Controller
+
+- Have internet access through NAT
+
+- Be able to join the domain
+
+This completes the networking phase of your Active Directory homelab. The next step is using PowerShell Script to create a bulk of users and adding them to the Active Directory to simulate a real-world enterprise!
+
+➡️ Continue to: [Creating Bulk Active Directory Users with PowerShell](./05_bulkusers_active-directory.md)
