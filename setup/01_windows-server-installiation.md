@@ -23,6 +23,7 @@ First, you will have to download the following software needed to conduct this v
 2. Put the following settings:
     - **Name**: DC
     - **ISO Image**: Enter the ISO File for Windows Server 2022
+    - Click **Skip Unattended Installation**
     - **RAM**: 2048MB or 4096MB depending on your host machine
     - **Processors**: 1 or 2
     - **Hard Disk**: Select 'Create a virtual hard disk' > Set to 25GB or more
