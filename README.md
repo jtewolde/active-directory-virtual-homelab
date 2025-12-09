@@ -39,6 +39,7 @@ This homelab project will cover:
 | 2025-11-15 | File Sharing & Permissions | Created a shared folder in Server Manager and configured file-share permissions. Set up department-based security groups (e.g., HR, Front Desk) and assigned users to each group to test access control. Verified that only authorized groups could access specific folders and practiced mapping the shared folder as a network drive on the client machine. |
 | 2025-11-19 | Advanced File Sharing & OU Organization | Continued practicing file sharing by creating additional department-based security groups such as Sales and Marketing and assigning users accordingly. Also created separate Organizational Units (OUs) for each department to improve user organization and streamline permission management. |
 | 2025-11-26 | Remote Desktop Services | Researched how to enable and configure Remote Desktop for domain-joined clients, including setting up an RDP access group, applying the necessary Group Policy settings, and confirming remote access using MSTSC. |
+| 2025-12-03 | Remote Desktop Services Part 2 | Continued configuring Remote Desktop in the lab by enabling RDP on the client VM, testing admin access, and researching how to let administrators access specific user desktops through Remote Desktop. |
 
 
 
