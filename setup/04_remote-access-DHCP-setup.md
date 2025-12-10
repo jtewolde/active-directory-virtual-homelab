@@ -43,7 +43,7 @@ Your Domain Controller will now provide internet access to all machines in the I
 The purpose of a **DHCP Scope** is to define a range of IP addresses that client machines under the network can receive and lease out for use.
 
 1. Open **DHCP** from **Tools** menu in Server Manager.
-2. Click on the  right arrow next to your domain to expand it > Right-Click on **IPv4** and select **"New Scope"**.
+2. Click on the right arrow next to your domain to expand it > Right-Click on **IPv4** and select **"New Scope"**.
 3. You will be asked to enter a name and description of the scope, name it whatever you want like **"InternalNetScope"** > Click "Next" to advance.
 4. Next is defining the **DHCP Scope Range** of IP addresses that client machines can be assigned for. A starting and ending IP addresses need to be defined, as well as the **Subnet Mask**. Use the following values for defining the scope range:
     - **Start IP Address**: 172.16.0.100

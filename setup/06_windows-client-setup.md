@@ -73,6 +73,50 @@ If you don't see any output for the **Default Gateway** or the **IP Address**, t
 1. Open **Settings** > **System** > **About**.
 2. Scroll down to the **Related Settings** > Select **Rename this PC (Advanced)**.
 3. You will be instructed to sign in with an Admin account, sign in with the admin account you created using the **Domain Controller**.
-4. 
+4. A window will pop up to change the system's properties. On the **Computer Name** tab, click the **"Change"** button that allows the user to change the computer's name or its domain.
+5. Once clicked, another window will appear that allows you to change the computer's name and it's domain. Enter the following:
+    - **Computer Name**: CLIENT1(for being able to identify easily)
+    - **Domain**: Your Domain Name (EX: jotewodomain.com)
+6. Once you entered the information, click **Enter** and you should see a message, welcoming the user into the domain.
+7. Then, you will be asked to restart the computer to confirm changes.
+
+![Client](./screen-recordings/Client5.gif)
+![Client](./images/Client6.png)
+
+## Step 8: Log in using a Domain User
+After your computer restarts and you're on the login screen:
+1. Click **Other User** to sign in with a new account
+2. Sign in using a domain user account that was created earlier with the PowerShell Script:
+    - **Username Example**: aacre
+    - **Password**: Password1
+
+If successful, Windows should be setting up the user and the client machine will be joined and communicating with **Active Directory**.
+
+![ClientUser](./screen-recordings/Client7.gif)
+
+## Step 6: Verify IP Address Lease from DHCP
+Finally, let's ensure that the Windows Client is properly receiving an **IP Address** from the Domain Controller.
+
+**On the Domain Controller:**
+1. Open **Server Manager** > **Tools** > **DHCP**
+2. The **DHCP** window will pop up. Click on the right arrow next to your domain to expand.
+3. Expand **IPv4** > **Scope** > Click **Address Leases**.
+4. In the middle of the window, you will see:
+    - **Client VM's IP Address**: 172.16.0.100
+    - **Client VM's Hostname**: CLIENT1@domainname.com
+    - **Lease Expiration Date**: 12/16/2025
+
+![ClientVM](./images/Client7.png)
+
+This confirms that the DC is correctly acting as the DHCP server for the internal network.
+
+## Conclusion
+
+Your Windows Client VM is now successfully networked, receiving IP configuration from DHCP, and joined to your Active Directory domain. This completes the client-side setup and prepares your environment for further enterprise-level configurations such as Group Policy, file sharing, security baselines, and workstation management.
+
+➡️ Continue to: [Configuring Group Policies(GPOs) in Active Directory](./07_group_policies_configuration.md)
+
+
+
 
 
