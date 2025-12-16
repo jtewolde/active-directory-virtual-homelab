@@ -40,6 +40,8 @@ This homelab project will cover:
 | 2025-11-19 | Advanced File Sharing & OU Organization | Continued practicing file sharing by creating additional department-based security groups such as Sales and Marketing and assigning users accordingly. Also created separate Organizational Units (OUs) for each department to improve user organization and streamline permission management. |
 | 2025-11-26 | Remote Desktop Services | Researched how to enable and configure Remote Desktop for domain-joined clients, including setting up an RDP access group, applying the necessary Group Policy settings, and confirming remote access using MSTSC. |
 | 2025-12-03 | Remote Desktop Services Part 2 | Continued configuring Remote Desktop in the lab by enabling RDP on the client VM, testing admin access, and researching how to let administrators access specific user desktops through Remote Desktop. |
+| 2025-12-14 | Help Desk Role Design | Designed a least-privilege Help Desk role in Active Directory by creating a dedicated HelpDesk security group, organizing privileged accounts into a separate OU, and planning OU-based delegation to avoid assigning Domain Admin rights while still allowing user support tasks. |
+
 
 
 
