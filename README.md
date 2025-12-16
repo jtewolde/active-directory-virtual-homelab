@@ -42,6 +42,7 @@ This homelab project will cover:
 | 2025-12-03 | Remote Desktop Services Part 2 | Continued configuring Remote Desktop in the lab by enabling RDP on the client VM, testing admin access, and researching how to let administrators access specific user desktops through Remote Desktop. |
 | 2025-12-14 | Help Desk Role Design | Designed a least-privilege Help Desk role in Active Directory by creating a dedicated HelpDesk security group, organizing privileged accounts into a separate OU, and planning OU-based delegation to avoid assigning Domain Admin rights while still allowing user support tasks. |
 | 2025-12-15 | Help Desk Delegation & Remote Access | Delegated Help Desk permissions for password resets and account unlocks using the Delegate Control Wizard on user OUs, and configured Remote Desktop access for Help Desk users by adding the HelpDesk group to the Remote Desktop Users group via computer-based Group Policy. Verified that Help Desk accounts could support users without accessing Domain Controllers. |
+| 2025-12-16 | RSAT Installation & Troubleshooting | Installed Remote Server Administration Tools (RSAT) on a domain-joined Windows client for Help Desk use, troubleshooting installation failures caused by Windows Update connectivity and DNS forwarding misconfigurations in the Active Directory lab. Confirmed successful access to Active Directory Users and Computers (ADUC) from a non-admin Help Desk account. |
 
 
 
