@@ -1,10 +1,10 @@
 # Creating Bulk Active Directory Users with PowerShell
 
-## Objective
+## Objective:
 
 In this section, I will demostrate how to create hundreds of sample users using a PowerShell Script. This simulates a realistic enterprise environment where IT Support and System Admins must manage large number of accounts, organizational units, and department structures.
 
-## Overview
+## Overview:
 
 Manually creating dozens or hundreds of users in **Active Directory** will be very time-consuming and unrealistic for enterprise workflows. **PowerShell** solves this by allowing adminstrators to automate user creation with repeatable, customizable scripts.
 

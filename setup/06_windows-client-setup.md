@@ -1,6 +1,6 @@
-## Windows 10 Client VM Setup and Joining to Domain
+# Windows 10 Client VM Setup and Joining to Domain
 
-## Objective
+## Objective:
 
 In this section, I will demostrate how to create a **Windows 10 or 11 Client Virtual Machine** inside **VirtualBox**, configure it for the internal network, and join it to the **Active Directory Domain** that was previously set up on the Windows Server 2022 Domain Controller.
 
@@ -112,9 +112,10 @@ This confirms that the DC is correctly acting as the DHCP server for the interna
 
 ## Conclusion
 
-Your Windows Client VM is now successfully networked, receiving IP configuration from DHCP, and joined to your Active Directory domain. This completes the client-side setup and prepares your environment for further enterprise-level configurations such as Group Policy, file sharing, security baselines, and workstation management.
+Your Windows Client VM is now successfully networked, receiving IP configuration from DHCP, and joined to your Active Directory domain. This completes the client-side setup and prepares your environment for further enterprise-level configurations such as User Account Management, Group Policy, file sharing, security baselines, and workstation management.
 
-➡️ Continue to: [Configuring Group Policies(GPOs) in Active Directory](./07_group_policies_configuration.md)
+➡️ Continue to: **[User Account Management (Help Desk Operations)](./06_user_account_management.md)**
+
 
 
 
