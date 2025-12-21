@@ -83,5 +83,43 @@ All actions in this section are performed using **Active Directory Users and Com
 - First, disable the account that you want to test on the **Client VM**.
 - Verify that when you try to sign in to the account, the account is disabled.
 ![DisableAccount](./images/Disable2.png)
+
+
+## Ticket 4: Re-enable an User's Account
+
+**Scenario:** A previously disabled user returns from leave is rehired.
+
+**Steps to Resolve:**
+1. Right-Click on the user's account that you want to enable.
+2. Select **Enable Account** option.
+3. The account's icon will no longer have a downward arrow.
+
+**Verification:**
 - Follow the steps above on the **Domain Controller** and attempt to sign in back with the same account to successfully log in.
+
+
+## Ticket 5: Moving a User to a Different Organizational Unit
+
+**Scenairo:** A user changes departments and needs new policies applied.
+
+**Steps to Resolve:**
+1. Find the desired user account that you want to change departments/organizational units.
+2. Drag the user to the appropriate organizational unit or right-click on the user and select **"Move"**. A window will appear that has all of the organizational units in the domain > Select the OU that this appropriate for the user.
+3. Confirm the move.
+
+![Move1](./screen-recordings/Move1.gif)
+
+## Conclusion:
+
+This section demonstrates real-world Active Directory account management tasks commonly handled by IT Help Desk and Desktop Support professionals. By completing these actions, you have validated your ability to manage users securely and efficiently within an enterprise Windows domain environment.
+
+These skills are foundational for roles such as:
+
+- **IT Help Desk Technician**
+
+- **Desktop Support Specialist**
+
+- **Junior Systems Administrator**
+
+➡️ Continue to: **[Group Policy Object (GPO) Setup](./07_group_policy_setup.md)**
 
