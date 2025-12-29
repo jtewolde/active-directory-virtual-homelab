@@ -29,7 +29,7 @@ In this lab, I will demonstrate how to configure the following group policies:
 
 ---
 
-## Step 1: Open Group Policy Management Console(GPMC)
+## Steps: Open Group Policy Management Console(GPMC)
 1. Boot up and login into your **Domain Controller**.
 2. Open **Server Manager** > **Tools** > **Group Policy Management** or use the search bar on the **Task Bar**.
 3. A window should appear on the screen. On the left-hand side, you will see a **'Forest'** object with your domain name.
@@ -40,7 +40,7 @@ In this lab, I will demonstrate how to configure the following group policies:
 
 Next, I will be showing how to create GPOs for different policies to be applied to all standard users in the domain. All of the policies can either be applied to a single **GPO Object** for convienence or created separately for easier reusability across other OUs. For these examples, I will create a seperate GPO for each of them.
 
-## Step 2: Create a GPO for Standard Users
+## Steps: Create a GPO for Standard Users
 
 1. Right-click on the **_USERS** Organizational Unit.
 2. Select **"Create a GPO in this domain, and Link in here..."**
@@ -51,10 +51,10 @@ Next, I will be showing how to create GPOs for different policies to be applied 
 
 ## GPO 1: Disable Command Prompt for Users
 
-#### Purpose:
+##### Purpose:
 This policy prevents standard users from accessing the Command Prompt, reducing the risk of unauthorized system changes and command-line misuse.
 
-### Step 3: Edit the GPO
+### Steps: Edit the GPO
 1. Create the **GPO** by following the step above and name it: **Disable Command Prompt**.
 2. Right-click on the GPO and select **Edit** to open the **Group Policy Management Editor**.
 
@@ -80,7 +80,111 @@ The **Group Policy Management Editor** window will appear on your screen. On the
 
 ---
 
-### Step 4: Disable Command Prompt via User Policy
+### Steps: Disable Command Prompt via User Policy
 
-1. Navigate to **User Configuration** > **Policies** > **Adminstrative Templates** > **System**
+1. Navigate to **User Configuration** > **Policies** > **Adminstrative Templates** > **System**.
+2. Once in the system folder, search and locate the following policy: **"Prevent access to the command prompt"** > Double-click on it to open.
+3. The window will pop up where it will give an explanation on what the policy does and if you want to enable it.
+4. Select the **Enabled** option and click **Apply** > **OK** to enforce the policy on the GPO.
+5. Set **Disable command prompt script** processing to **Yes**.
+6. Close the editor.
+![CommandPrompt](./screen-recordings/CommandPrompt.gif)
+
+---
+
+## GPO 2: Password & Account Lockout Policy
+
+##### Purpose: 
+This policy enforces strong password complexity, expiration, and account lockout rules to protect domain accounts from brute-force attacks and unauthorized access. Centralizing password enforcement ensures consistent security standards across all users in the domain.
+
+### Steps: Enforce Password Complexity Policy
+
+1. Create a new **GPO** called **"Password Policy"** or edit the **"Default Domain Policy"** GPO under your domain in order to enforce the policy throughout the domain.
+2. Right-click on your GPO and select **Edit**.
+3. Navigate to: **Computer Configuration** > **Policies** > **Windows Settings** > **Account Policies**.
+4. Click on **Password Policy** to make changes to the password requirements.
+5. There are multiple rules that you can set for the password policy like:
+    - **Minimum Password Length**
+    - **Maximum Password Age**
+    - **Enforce Password History**
+6. For this lab, we will only configure the **"Password must meet the complexity requirements"**.
+7. Double-click on the policy > Select **Enabled** > Click **Apply**.
+
+![Password](./screen-recordings/PasswordPolicy.gif)
+
+### Steps: Enforce Account Lockout Policy
+
+1. Create a new **GPO** called **"Account Lockout Policy"** or edit the **"Default Domain Policy"** GPO under your domain in order to enforce the policy throughout the domain.
+2. Right-click on your GPO and select **Edit**.
+3. Navigate to: **Computer Configuration** > **Policies** > **Windows Settings** > **Account Policies**.
+4. Click on **Account Lockout Policy** to make changes to the account lockout settings.
+5. Configure the following policies:
+    - **Account Lockout Duration:** 30 minutes
+    - **Account Lockout Threshold:** 5 invalid logon attempts
+    - **Reset Account Lockout Counter After:** 30 minutes
+6. Close the editor to save changes.
+
+![AccountLockout](./screen-recordings/AccountLockout.gif)
+
+---
+
+## GPO 3: Disable USB Storage Devices
+
+##### Purpose:
+This policy blocks the use of USB storage devices on domain computers to prevent data exfiltration, malware introduction, and unauthorized file transfers. Disabling removable media is a common enterprise security control used to protect sensitive information.
+
+#### Steps: 
+1. Create a new **GPO** called **Disable USB Devices** inside the **_COMPUTERS** OU or edit the **Default Domain Policy** GPO if you want this enforced throughout the entire domain.
+2. Right-Click on this GPO and select **Edit**.
+3. Navigate to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **System** > **Removable Storage Access**.
+4. Enable the following policy:
+    - **All Removable Storage Classes: Deny all access**
+5. Close the editor.
+
+![USB_Devices](./screen-recordings/USB_Devices.gif)
+
+---
+
+## GPO 4: Map Network Drives Automatically
+
+##### Purpose:
+This policy automatically maps network drives for users at logon, providing consistent and easy access to shared resources such as departmental files and documentation. Automating drive mapping reduces manual configuration and improves user productivity.
+
+#### Steps:
+
+1. Create a **GPO** named **"Map Network Drives"** inside of the **_USERS** OU > Right-Click on the GPO and select **Edit**.
+2. Navigate to: **User Configuration** > **Preferences** > **Windows Settings** > **Drive Maps**.
+3. Right-Click on the **Drive Maps** menu and click **New** > **Mapped Drive**.
+![NetworkDrive](./screen-recordings/NetworkDrive1.gif)
+
+4. To create a shared network drive, configure the following properties:
+    - **Action:**: Create
+    - **Location:** \\DC\SharedFolder or \\(Name of DC)\(Name)
+    - **Drive Letter:** Pick one (e.g.; **C:**)
+    - **Label as:**: Shared Drive
+5. Click **OK** to confirm.
+
+As a result, all users in the **_USERS** OU will automatically receive a mapped network drive at logon.
+
+![NetworkDrive](./images/NetworkDrive2.png)
+
+---
+
+## GPO 5: Enforce a Universal Desktop Wallpaper
+
+##### Purpose:
+This policy enforces a standardized desktop wallpaper across all domain users to maintain a consistent corporate appearance. It can also be used to display branding, security notices, or compliance messages in enterprise environments.
+
+#### Steps:
+1. Create a **GPO** named **"Universal Desktop Wallpaper"** inside of the **_USERS** OU > Right-click on the GPO and select **Edit**.
+2. Navigate to: **User Configuration** > **Policies** > **Adminstrative Templates** > **Desktop** > **Desktop**.
+3. Enable **Desktop Wallpaper Policy**.
+4. Set the following settings to your desire:
+    - **Wallpaper Name:** UNC Path to image (e.g \\\DC\Wallpapers\HomeBackground.jpg)
+    - **Wallpaper Style:** Fill or Stretch
+5. Click **Apply > Ok**.
+
+As a result, all of the users will receive a consistent desktop wallpaper across the domain.
+
+## Verification:
 
