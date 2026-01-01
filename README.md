@@ -44,7 +44,7 @@ This homelab project will cover:
 | 2025-12-15 | Help Desk Delegation & Remote Access | Delegated Help Desk permissions for password resets and account unlocks using the Delegate Control Wizard on user OUs, and configured Remote Desktop access for Help Desk users by adding the HelpDesk group to the Remote Desktop Users group via computer-based Group Policy. Verified that Help Desk accounts could support users without accessing Domain Controllers. |
 | 2025-12-16 | RSAT Installation & Troubleshooting | Installed Remote Server Administration Tools (RSAT) on a domain-joined Windows client for Help Desk use, troubleshooting installation failures caused by Windows Update connectivity and DNS forwarding misconfigurations in the Active Directory lab. Confirmed successful access to Active Directory Users and Computers (ADUC) from a non-admin Help Desk account. |
 | 2025-12-18 | Restricting ADUC Access with GPO | Implemented a user-based Group Policy to restrict access to Active Directory Users and Computers (ADUC) for standard client users by limiting Microsoft Management Console snap-ins. Applied the policy to regular user OUs while excluding Help Desk accounts through OU separation and security filtering, ensuring only authorized support staff could access AD administrative tools. |
-
+| 2025-12-26 | Group Policy – Personal Network Drives | Configured Group Policy Objects to map personal network drives for users across the Users OU, ensuring each user receives a private, automatically mapped personal folder upon login. |
 
 
 
