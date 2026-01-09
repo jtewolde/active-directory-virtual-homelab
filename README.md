@@ -45,6 +45,7 @@ This homelab project will cover:
 | 2025-12-16 | RSAT Installation & Troubleshooting | Installed Remote Server Administration Tools (RSAT) on a domain-joined Windows client for Help Desk use, troubleshooting installation failures caused by Windows Update connectivity and DNS forwarding misconfigurations in the Active Directory lab. Confirmed successful access to Active Directory Users and Computers (ADUC) from a non-admin Help Desk account. |
 | 2025-12-18 | Restricting ADUC Access with GPO | Implemented a user-based Group Policy to restrict access to Active Directory Users and Computers (ADUC) for standard client users by limiting Microsoft Management Console snap-ins. Applied the policy to regular user OUs while excluding Help Desk accounts through OU separation and security filtering, ensuring only authorized support staff could access AD administrative tools. |
 | 2025-12-26 | Group Policy – Personal Network Drives | Configured Group Policy Objects to map personal network drives for users across the Users OU, ensuring each user receives a private, automatically mapped personal folder upon login. |
+| 2026-01-08 | Group Policy – Verification/Fix | Verified and fixed Group Policy application issues by correcting GPO links and enforcement on the Users OU, ensuring user-level policies such as a universal desktop wallpaper and Command Prompt restrictions were properly applied on client machines. |
 
 
 
