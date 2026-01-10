@@ -186,5 +186,74 @@ This policy enforces a standardized desktop wallpaper across all domain users to
 
 As a result, all of the users will receive a consistent desktop wallpaper across the domain.
 
-## Verification:
+## Verification and Testing of Applied GPOs:
 
+After configuring all **Group Policy Objects**, it is important to verify that each policy is correctly applied and functioning as intended on a domain-joined client machine.
+
+**Note:** Ensure that the **Restrict Command Prompt GPO** is temporarily disabled or unlinked from the **_USERS Organizational Unit** before forcing a **Group Policy** update. Access to Command Prompt or PowerShell is required to run 
+```gpupdate /force``` and ```gpresult /r```
+
+After completing all verification steps, this GPO can be re-enabled to enforce standard user restrictions.
+
+##### Step 1: Force Group Policy Update
+1. Log in to the Windows client machine using a standard domain user account.
+2. Open **Command Prompt or Powershell**.
+3. Run the following command in the terminal.
+```gpupdate /force```
+    - You should see this output as a result to confirm the changes have been made:
+    ![GPOUpdate](./images/ForceCommandPrompt.png)
+4. Log out and log back in when prompted.
+
+##### Step 2: Verify Applied Group Policies
+
+To confirm which policies are applied to the user and computer:
+
+1. Open **Command Prompt** on the client machine.
+2. Run the following command in the terminal:
+```gpresult /r```
+3. Verify that the configured GPOs appear under **Applied Group Policy Objects** for both the user and the computer.
+
+![gpresult](./images/GPResult.png)
+
+##### Step 3: Test Each GPO
+
+- GPO: **Disable Command Prompt**
+    - Attempt to open **Command Prompt** as a standard user
+    - **Expected Result:** Message saying that "The command prompt has been disabled by your adminstrator."
+![DisableCMD](./images/DisableCMD.png)
+
+- GPO: **Enforce Password and Account Lockout Policies**
+
+    - Attempt to change a password to one that does not meet complexity requirements.
+    - **Expected Result:** Password change is rejected.
+    - Enter an incorrect password multiple times.
+    - **Expected Result:** Account becomes locked after reaching the configured threshold.
+
+![AccountLockout](./images/AccountLockout.png)
+
+- GPO: **Disable USB Storage Devices**
+    - Insert a USB flash drive into the client machine
+    - **Expected Result:** Device is blocked and inaccessible
+
+-  GPO: **Map Network Drives Automatically**
+    - Log out and log back in
+    - Open **File Explorer** > **This PC**.
+    - **Expected Result:** You should see the newly mapped network drive appearing on the bottom of the window, under **Network Locations**.
+    ![NetworkMap](./screen-recordings/NetworkDriveTest.gif)
+
+- GPO : **Enforce Universal Desktop Wallpaper**
+    - Login as a domain user
+    **Expected Result:** The desktop wallpaper should match the enforced image that you selected when creating the GPO.
+    ![DesktopWallpaper](./images/UniversalDesktop.png)
+
+##### Step 4: Troubleshooting (If Needed)
+
+If a policy does not apply as expected:
+- Confirm the user that you are logged in as is in the correct **Organizational Unit(OU)**,
+- Ensure the GPO is **Linked** and **Enabled**.
+- Check **Security Filtering** and **WMI Filters**.
+- Re-run: ```gpupdate /force```
+
+## Conclusion:
+
+Successfully verifying each **Group Policy** confirms that centralized management is functioning correctly within the **Active Directory environment**. This validation step mirrors real-world IT administration workflows and ensures policies are enforced consistently across all users and computers in the domain.
