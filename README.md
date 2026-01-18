@@ -29,37 +29,37 @@ Each document below covers a specific phase of the Active Directory homelab and 
 ---
 
 ### 🖥️ Server & Client Setup
-- [01 – Windows Server Installation](./01_windows-server-installiation.md)  
+- [01 – Windows Server Installation](./setup/01_windows-server-installiation.md)  
   _Covers Windows Server 2022 installation, initial configuration, and VM setup._
 
-- [06 – Windows Client Setup](./06_windows-client-setup.md)  
+- [06 – Windows Client Setup](./setup/06_windows-client-setup.md)  
   _Documents Windows 10/11 client VM setup, domain joining, and initial testing._
 
   ----
 
 ### 🌐 Network & Domain Configuration
-- [02 – Network Configuration](./02_network-configuration.md)  
+- [02 – Network Configuration](./setup/02_network-configuration.md)  
   _Details internal network setup, static IP assignment, DNS configuration, and VM connectivity._
 
-- [03 – Active Directory Setup](./03_active-directory-setup.md)  
+- [03 – Active Directory Setup](./setup/03_active-directory-setup.md)  
   _Step-by-step Active Directory Domain Services installation and domain promotion._
 
-- [04 – Remote Access & DHCP Setup](./04_remote-access-DHCP-setup.md)  
+- [04 – Remote Access & DHCP Setup](./setup/04_remote-access-DHCP-setup.md)  
   _Covers DHCP scope creation, Remote Access (NAT), and client connectivity._
 
   ----
 
 ### 👤 User & Account Management
-- [05 – Bulk User Creation in Active Directory](./05_bulkusers_active-directory.md)  
+- [05 – Bulk User Creation in Active Directory](./setup/05_bulkusers_active-directory.md)  
   _Uses PowerShell automation to create multiple users for enterprise-scale testing._
 
-- [07 – User Account Management](./07_user_account_management.md)  
+- [07 – User Account Management](./setup/07_user_account_management.md)  
   _Simulates real help desk scenarios such as enabling/disabling users, password resets, and account unlocks._
 
   -----
 
 ### 🛡️ Group Policy & Security
-- [08 – Group Policy Management](./08_group_policy_management.md)  
+- [08 – Group Policy Management](./setup/08_group_policy_management.md)  
   _Documents creation, enforcement, and verification of Group Policy Objects for security and user restrictions._
 
 ---
