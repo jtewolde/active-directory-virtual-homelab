@@ -91,6 +91,7 @@ Each document below covers a specific phase of the Active Directory homelab and 
 | 2025-12-26 | Group Policy – Personal Network Drives | Configured Group Policy Objects to map personal network drives for users across the Users OU, ensuring each user receives a private, automatically mapped personal folder upon login. |
 | 2026-01-08 | Group Policy – Verification/Fix | Verified and fixed Group Policy application issues by correcting GPO links and enforcement on the Users OU, ensuring user-level policies such as a universal desktop wallpaper and Command Prompt restrictions were properly applied on client machines. |
 | 2026-01-18 | Remote Desktop Services Part 3 | Used Remote Desktop from the server to connect to a client machine and create a folder on a user’s desktop to verify administrative access and user-level file management through RDP. |
+| 2026-01-24 | Remote Desktop Services – Help Desk RDP Configuration | Successfully configured Help Desk users to remotely access client machines via RDP by applying the correct Group Policy permissions and security group assignments, resolving prior authorization issues. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
