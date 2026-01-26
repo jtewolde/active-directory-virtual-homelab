@@ -20,6 +20,50 @@ This homelab project will cover:
   - Joining a **Windows 11 client** to the domain
   - Using **PowerShell** for automation and administrative tasks
 
+---
+
+## 📘 Documentation Index
+
+Each document below covers a specific phase of the Active Directory homelab and builds on the previous steps.
+
+---
+
+### 🖥️ Server & Client Setup
+- [01 – Windows Server Installation](./setup/01_windows-server-installiation.md)  
+  _Covers Windows Server 2022 installation, initial configuration, and VM setup._
+
+- [06 – Windows Client Setup](./setup/06_windows-client-setup.md)  
+  _Documents Windows 10/11 client VM setup, domain joining, and initial testing._
+
+  ----
+
+### 🌐 Network & Domain Configuration
+- [02 – Network Configuration](./setup/02_network-configuration.md)  
+  _Details internal network setup, static IP assignment, DNS configuration, and VM connectivity._
+
+- [03 – Active Directory Setup](./setup/03_active-directory-setup.md)  
+  _Step-by-step Active Directory Domain Services installation and domain promotion._
+
+- [04 – Remote Access & DHCP Setup](./setup/04_remote-access-DHCP-setup.md)  
+  _Covers DHCP scope creation, Remote Access (NAT), and client connectivity._
+
+  ----
+
+### 👤 User & Account Management
+- [05 – Bulk User Creation in Active Directory](./setup/05_bulkusers_active-directory.md)  
+  _Uses PowerShell automation to create multiple users for enterprise-scale testing._
+
+- [07 – User Account Management](./setup/07_user_account_management.md)  
+  _Simulates real help desk scenarios such as enabling/disabling users, password resets, and account unlocks._
+
+  -----
+
+### 🛡️ Group Policy & Security
+- [08 – Group Policy Management](./setup/08_group_policy_management.md)  
+  _Documents creation, enforcement, and verification of Group Policy Objects for security and user restrictions._
+
+---
+
 ## Progress Logs
 
 | Date | Topic | Description |
@@ -46,9 +90,8 @@ This homelab project will cover:
 | 2025-12-18 | Restricting ADUC Access with GPO | Implemented a user-based Group Policy to restrict access to Active Directory Users and Computers (ADUC) for standard client users by limiting Microsoft Management Console snap-ins. Applied the policy to regular user OUs while excluding Help Desk accounts through OU separation and security filtering, ensuring only authorized support staff could access AD administrative tools. |
 | 2025-12-26 | Group Policy – Personal Network Drives | Configured Group Policy Objects to map personal network drives for users across the Users OU, ensuring each user receives a private, automatically mapped personal folder upon login. |
 | 2026-01-08 | Group Policy – Verification/Fix | Verified and fixed Group Policy application issues by correcting GPO links and enforcement on the Users OU, ensuring user-level policies such as a universal desktop wallpaper and Command Prompt restrictions were properly applied on client machines. |
-
-
-
+| 2026-01-18 | Remote Desktop Services Part 3 | Used Remote Desktop from the server to connect to a client machine and create a folder on a user’s desktop to verify administrative access and user-level file management through RDP. |
+| 2026-01-24 | Remote Desktop Services – Help Desk RDP Configuration | Successfully configured Help Desk users to remotely access client machines via RDP by applying the correct Group Policy permissions and security group assignments, resolving prior authorization issues. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
