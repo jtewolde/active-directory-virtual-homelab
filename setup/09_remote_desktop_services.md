@@ -66,3 +66,41 @@ This group will be used to control which users are allowed to remotely access cl
 
 ---
 
+### Configure Remote Desktop Via Group Policies
+
+To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ensure that client machines can be remoted into authorized admins/employees. In a enterprise environment, this would be necessary for the IT Department to easily provide assistance remotely to client machines within the network.
+
+#### Step 2: Create a Group Policy Object for RDP Access
+
+1. Open the **Group Policy Management Console** either through **Server Manager** or searching it during the search bar.
+2. Locate and right-click on the **_COMPUTERS** OU.
+3. Select **Create a GPO in this domain, and Link it here...**
+4. Name the following GPO: **Allow Remote Desktop Access**.
+5. Click **"OK"** to confirm the GPO creation.
+
+![RDP3](./screen-recordings/RDP3.gif)
+
+#### Step 3: Enable Remote Desktop Connections via GPO
+
+The purpose of the policy for **Enabling Remote Desktop Connections** is to simply allow Remote Desktop Access on the client machine.
+
+Domain-joined computers rely on **Group Policy** to control RDP behavior. Enabling this policy ensures that **Remote Desktop** is explicitly permitted at the system level instead of relying on local machine settings, which are overridden in a domain environment.
+
+1. Right-click the newly created **Allow Remote Desktop Access** GPO -> **Edit**.
+2. Navigate to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **Windows Components** > **Remote Desktop Services** > **Remote Desktop Session Host** > **Connections**.
+3. Locate the following policy: **"Allow users to connect remotely using Remote Desktop Services."**
+4. Set the policy to **Enabled**. This will allow computers to enable Remote Desktop Access and connections to be made.
+
+![RDP4](./screen-recordings/RDP4.gif)
+
+#### Step 4: Allow log on through Remote Desktop Services
+
+The purpose of this policy is to determine which users or groups are allowed to log on using **Remote Desktop**.
+
+Even if **Remote Desktop** is enabled, users will be denied access unless they are granted the “Log on through Remote Desktop Services” right.
+
+By assigning this right to a **Help Desk security group**, you:
+- Allow support staff to remotely access user desktops.
+- Avoid granting Domain Admin or local administrator privileges.
+- Follow the principle of least privilege.
+
