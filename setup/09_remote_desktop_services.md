@@ -104,3 +104,28 @@ By assigning this right to a **Help Desk security group**, you:
 - Avoid granting Domain Admin or local administrator privileges.
 - Follow the principle of least privilege.
 
+Inside of the same GPO you created:
+1. Go to: **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Local Policies** > **User Rights Assignment**.
+2. Add users and groups that you want to be allowed to log on using **Remote Desktop**. For example:
+     - **HelpDesk-RDP**
+     - **Domain Admins**
+
+![RDP5](./screen-recordings/RDP5.gif)
+
+#### Step 5: Allow inbound Remote Desktop exceptions through Windows Defender Firewall
+
+The purpose of this policy is to allow **RDP Traffic (TCP 3389)** through the **Windows Firewall**.
+
+Even with **Remote Desktop** enabled and user rights assigned, firewall restrictions will block connections unless RDP traffic is explicitly allowed.
+
+Using **Group Policy** to manage firewall rules ensure:
+- Consistent behavior across all client machines.
+- No manual firewall configuration is required per machine.
+- RDP access remains controlled and auditable.
+
+
+Inside of the same GPO you created:
+1. Go to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **Network** > **Network Connections** > **Windows Defender Firewall** > **Domain Profile** > Select this setting: **Windows Defender Firewall: Allow inbound Remote Desktop exceptions**.
+2. Enable this setting wo allow computers in the network to receive Remote Desktop connection requests by opening **TCP Port 3389**.
+
+![RDP6](./screen-recordings/RDP6.gif)
