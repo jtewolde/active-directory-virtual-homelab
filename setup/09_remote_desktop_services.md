@@ -125,7 +125,28 @@ Using **Group Policy** to manage firewall rules ensure:
 
 
 Inside of the same GPO you created:
-1. Go to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **Network** > **Network Connections** > **Windows Defender Firewall** > **Domain Profile** > Select this setting: **Windows Defender Firewall: Allow inbound Remote Desktop exceptions**.
+1. Go to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **Network** > **Network Connections** > **Windows Defender Firewall** > **Domain Profile** > 
+    - Select this setting: **Windows Defender Firewall: Allow inbound Remote Desktop exceptions**.
 2. Enable this setting wo allow computers in the network to receive Remote Desktop connection requests by opening **TCP Port 3389**.
 
 ![RDP6](./screen-recordings/RDP6.gif)
+
+#### Step 6: Restrict Remote Desktop Access for Standard Users
+
+The purpose of enabling this setting is to add **Help Desk Groups** to the **Local Remote Desktop Users** group on client machines.
+
+This ensures that help desk users can:
+- RDP into client machines
+- Don't have to be local adminstrators
+- Without manually configuring each client
+
+This centralizes access control and simplifies ongoing management.
+
+1. In the same GPO, navigate to:
+    - **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Local Policies** > **User Rights Assignment**
+2. Edit the following setting: **Allow log on through Remote Desktop Services**.
+3. Add the following groups:
+    - **Domain Admins**
+    - OR a custom group like: **HelpDesk-RDP**
+
+![RDP7](./screen-recordings/RDP7.gif)

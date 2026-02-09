@@ -92,6 +92,7 @@ Each document below covers a specific phase of the Active Directory homelab and 
 | 2026-01-08 | Group Policy – Verification/Fix | Verified and fixed Group Policy application issues by correcting GPO links and enforcement on the Users OU, ensuring user-level policies such as a universal desktop wallpaper and Command Prompt restrictions were properly applied on client machines. |
 | 2026-01-18 | Remote Desktop Services Part 3 | Used Remote Desktop from the server to connect to a client machine and create a folder on a user’s desktop to verify administrative access and user-level file management through RDP. |
 | 2026-01-24 | Remote Desktop Services – Help Desk RDP Configuration | Successfully configured Help Desk users to remotely access client machines via RDP by applying the correct Group Policy permissions and security group assignments, resolving prior authorization issues. |
+| 2026-02-08 | Group Policy & RDP Session Behavior Testing | Validated how Group Policy Objects apply during Remote Desktop sessions by testing Help Desk logins on domain-joined machines, confirming user- and computer-based GPO processing, session isolation from Domain Admin logins, and documenting best-practice restrictions for Domain Controller access. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
