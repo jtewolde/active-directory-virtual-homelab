@@ -93,6 +93,7 @@ Each document below covers a specific phase of the Active Directory homelab and 
 | 2026-01-18 | Remote Desktop Services Part 3 | Used Remote Desktop from the server to connect to a client machine and create a folder on a user’s desktop to verify administrative access and user-level file management through RDP. |
 | 2026-01-24 | Remote Desktop Services – Help Desk RDP Configuration | Successfully configured Help Desk users to remotely access client machines via RDP by applying the correct Group Policy permissions and security group assignments, resolving prior authorization issues. |
 | 2026-02-08 | Group Policy & RDP Session Behavior Testing | Validated how Group Policy Objects apply during Remote Desktop sessions by testing Help Desk logins on domain-joined machines, confirming user- and computer-based GPO processing, session isolation from Domain Admin logins, and documenting best-practice restrictions for Domain Controller access. |
+| 2026-02-14 | Dell Personal Laptop Audio Troubleshooting – Code 45 Resolution | Diagnosed a “No audio device installed” issue on my personal Dell laptop where Realtek High Definition Audio appeared greyed out in Device Manager with error Code 45 (hardware not connected). Verified Windows Audio services were running and confirmed BIOS audio settings were enabled. Resolved the issue by uninstalling the Realtek audio driver and rebooting the system, allowing Windows to automatically redetect and reinstall the device successfully. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
