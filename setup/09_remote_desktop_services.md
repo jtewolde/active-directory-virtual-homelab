@@ -43,26 +43,34 @@ Because the client machine is joined to the **Active Directory** domain, **Remot
 
 ![ClientRDP](./screen-recordings/ClientRDP1.gif)
 
-### Step 1: Create a Remote Desktop Security Group
+### Step 1: Add Authorized Users to the Built-In Remote Desktop Users Group
+
+Before configuring Group Policy, it is important to prepare the built-in Remote Desktop Users group. This group determines who is permitted to initiate Remote Desktop sessions on domain-joined systems.
+
+Adding groups here allows centralized control of RDP access and will later be enforced through Group Policy to automatically apply to client machines.
 
 1. Boot up and log into the **Domain Controller VM**
 2. Open **Active Directory Users and Computers(ADUC)**
-3. Navigate to the standard **Users** OU under your domain(Not the created **_USERS**).
-4. Right-Click > **New** > **Group**.
-5. Create the following group:
-    - **Group Name:** HelpDesk-RDP
-    - **Group Scope:** Global
-    - **Group Type:** Security
+3. Navigate to the standard **Builtin** OU under your domain(Not the created **_USERS**).
+4. Locate and double click on the **"Remote Desktop Users"** security group.
+5. Once the **Properties** window appears, navigate to the **Members** tab.
+6. Click the **Add** button to add new members and add the following groups:
+    - **Domain Admins**
+    - **Help Desk Users** or your help desk security group
+7. Click **Apply** to save these changes.
 
-![RDP1](./screen-recordings/RDP1.gif)
+![RDP1](./screen-recordings/RDPGroupCreation.gif)
 
-6. Right-Click on the newly created security group > **Properties**.
-7. The **Properties** window will pop up and go to the **"Members"** tab.
-8. Add Help Desk and administrative users to this group.
+**The built-in Remote Desktop Users group:**
 
-![RDP2](./images/RDP2.png)
+- Grants permission to initiate RDP sessions
 
-This group will be used to control which users are allowed to remotely access client machines.
+- Does NOT grant administrative privileges
+
+- Supports the principle of least privilege
+- Can be enforced and managed via GPO (Restricted Groups)
+
+Later in this lab, we will use **Group Policy** to ensure this group membership is automatically applied to client machines for consistency and scalability.
 
 ---
 
@@ -70,7 +78,7 @@ This group will be used to control which users are allowed to remotely access cl
 
 To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ensure that client machines can be remoted into authorized admins/employees. In a enterprise environment, this would be necessary for the IT Department to easily provide assistance remotely to client machines within the network.
 
-#### Step 2: Create a Group Policy Object for RDP Access
+#### Step 3: Create a Group Policy Object for RDP Access
 
 1. Open the **Group Policy Management Console** either through **Server Manager** or searching it during the search bar.
 2. Locate and right-click on the **_COMPUTERS** OU.
@@ -80,7 +88,7 @@ To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ens
 
 ![RDP3](./screen-recordings/RDP3.gif)
 
-#### Step 3: Enable Remote Desktop Connections via GPO
+#### Step 4: Enable Remote Desktop Connections via GPO
 
 The purpose of the policy for **Enabling Remote Desktop Connections** is to simply allow Remote Desktop Access on the client machine.
 
@@ -93,7 +101,7 @@ Domain-joined computers rely on **Group Policy** to control RDP behavior. Enabli
 
 ![RDP4](./screen-recordings/RDP4.gif)
 
-#### Step 4: Allow log on through Remote Desktop Services
+#### Step 5: Allow log on through Remote Desktop Services
 
 The purpose of this policy is to determine which users or groups are allowed to log on using **Remote Desktop**.
 
@@ -112,7 +120,7 @@ Inside of the same GPO you created:
 
 ![RDP5](./screen-recordings/RDP5.gif)
 
-#### Step 5: Allow inbound Remote Desktop exceptions through Windows Defender Firewall
+#### Step 6: Allow inbound Remote Desktop exceptions through Windows Defender Firewall
 
 The purpose of this policy is to allow **RDP Traffic (TCP 3389)** through the **Windows Firewall**.
 
@@ -131,7 +139,7 @@ Inside of the same GPO you created:
 
 ![RDP6](./screen-recordings/RDP6.gif)
 
-#### Step 6: Restrict Remote Desktop Access for Standard Users
+#### Step 7: Restrict Remote Desktop Access for Standard Users
 
 The purpose of enabling this setting is to add **Help Desk Groups** to the **Local Remote Desktop Users** group on client machines.
 
