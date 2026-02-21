@@ -33,7 +33,7 @@ In this lab, I will demonstrate how to:
 
 ---
 
-### Step 0: Verify Remote Desktop is disabled on Client Machine
+### Step 1: Verify Remote Desktop is disabled on Client Machine
 
 1. Boot up and login to the **Client VM** with a **Domain Admin** account.
 2. Open **Settings** > **System** > **Remote Desktop**.
@@ -43,7 +43,7 @@ Because the client machine is joined to the **Active Directory** domain, **Remot
 
 ![ClientRDP](./screen-recordings/ClientRDP1.gif)
 
-### Step 1: Add Authorized Users to the Built-In Remote Desktop Users Group
+### Step 2: Add Authorized Users to the Built-In Remote Desktop Users Group
 
 Before configuring Group Policy, it is important to prepare the built-in Remote Desktop Users group. This group determines who is permitted to initiate Remote Desktop sessions on domain-joined systems.
 
@@ -78,7 +78,7 @@ Later in this lab, we will use **Group Policy** to ensure this group membership 
 
 To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ensure that client machines can be remoted into authorized admins/employees. In a enterprise environment, this would be necessary for the IT Department to easily provide assistance remotely to client machines within the network.
 
-#### Step 3: Create a Group Policy Object for RDP Access
+### Step 3: Create a Group Policy Object for RDP Access
 
 1. Open the **Group Policy Management Console** either through **Server Manager** or searching it during the search bar.
 2. Locate and right-click on the **_COMPUTERS** OU.
@@ -88,7 +88,7 @@ To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ens
 
 ![RDP3](./screen-recordings/RDP3.gif)
 
-#### Step 4: Enable Remote Desktop Connections via GPO
+### Step 4: Enable Remote Desktop Connections via GPO
 
 The purpose of the policy for **Enabling Remote Desktop Connections** is to simply allow Remote Desktop Access on the client machine.
 
@@ -101,26 +101,34 @@ Domain-joined computers rely on **Group Policy** to control RDP behavior. Enabli
 
 ![RDP4](./screen-recordings/RDP4.gif)
 
-#### Step 5: Allow log on through Remote Desktop Services
+### Step 5: Allow log on through Remote Desktop Services
 
 The purpose of this policy is to determine which users or groups are allowed to log on using **Remote Desktop**.
 
 Even if **Remote Desktop** is enabled, users will be denied access unless they are granted the “Log on through Remote Desktop Services” right.
 
-By assigning this right to a **Help Desk security group**, you:
+By assigning this right to the **Remote Desktop Users Security Group**, you:
 - Allow support staff to remotely access user desktops.
 - Avoid granting Domain Admin or local administrator privileges.
 - Follow the principle of least privilege.
 
-Inside of the same GPO you created:
-1. Go to: **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Local Policies** > **User Rights Assignment**.
-2. Add users and groups that you want to be allowed to log on using **Remote Desktop**. For example:
-     - **HelpDesk-RDP**
-     - **Domain Admins**
+1. In the same GPO, navigate to:
+    - **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Local Policies** > **User Rights Assignment**
+2. Edit the following setting: **Allow log on through Remote Desktop Services**.
+3. Check the **Define these policy settings** checkbox to add groups.
+4. Add the **Remote Desktop Users Group** that you created earlier in Step 0 that contains help desk users and domain admins.
 
-![RDP5](./screen-recordings/RDP5.gif)
+![RDP7](./screen-recordings/RDPStep5.gif)
 
-#### Step 6: Allow inbound Remote Desktop exceptions through Windows Defender Firewall
+### Step 6: Ensure No Deny Policy Conflicts
+
+The purpose of this step is to ensure that no users or groups that are being denied logging on through **Remote Desktop** that should have that permission.
+
+Still under **User Rights Assignment**, verify that the following policy, **"Deny log on through Remote Desktop Services"**, is not defined or doesn't have any group that should have access like **Remote Desktop Users Group**.
+
+Deny policies override allow policies.
+
+### Step 7: Allow inbound Remote Desktop exceptions through Windows Defender Firewall
 
 The purpose of this policy is to allow **RDP Traffic (TCP 3389)** through the **Windows Firewall**.
 
@@ -131,7 +139,6 @@ Using **Group Policy** to manage firewall rules ensure:
 - No manual firewall configuration is required per machine.
 - RDP access remains controlled and auditable.
 
-
 Inside of the same GPO you created:
 1. Go to: **Computer Configuration** > **Policies** > **Adminstrative Templates** > **Network** > **Network Connections** > **Windows Defender Firewall** > **Domain Profile** > 
     - Select this setting: **Windows Defender Firewall: Allow inbound Remote Desktop exceptions**.
@@ -139,22 +146,52 @@ Inside of the same GPO you created:
 
 ![RDP6](./screen-recordings/RDP6.gif)
 
-#### Step 7: Restrict Remote Desktop Access for Standard Users
+### Step 8: Enforce Group Membership using Restricted Groups
 
-The purpose of enabling this setting is to add **Help Desk Groups** to the **Local Remote Desktop Users** group on client machines.
+The purpose of configuring this policy is to automatically manage and enforce membership of the local **Remote Desktop Users** group on all client machines. This eliminates manual configuration and ensures consistency
 
-This ensures that help desk users can:
-- RDP into client machines
-- Don't have to be local adminstrators
-- Without manually configuring each client
-
-This centralizes access control and simplifies ongoing management.
-
-1. In the same GPO, navigate to:
-    - **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Local Policies** > **User Rights Assignment**
-2. Edit the following setting: **Allow log on through Remote Desktop Services**.
-3. Add the following groups:
+1. Navigate to:
+    - **Computer Configuration** > **Policies** > **Windows Settings** > **Security Settings** > **Restricted Groups**
+2. Right-click on the empty group list and select **Add Group**.
+3. Click the **Browse** button, type **"Remote Desktop"** and click the **Check Names** button. You should see the **Remote Desktop Users** Group appear > Select that group.
+4. Click **OK** on the Add Group window.
+5. The properties window should appear. Click on the **Add** button that is next to **Members of this group**.
+6. Add the following groups as members:
     - **Domain Admins**
-    - OR a custom group like: **HelpDesk-RDP**
+    - **Any Help Desk Group**
+7. After adding those groups, click **OK** to close the box to complete the addition of these groups to the **Remote Desktop Users Group**.
 
-![RDP7](./screen-recordings/RDP7.gif)
+![Step8](./screen-recordings/RDPStep8.gif)
+
+This ensures every client machine automatically includes the correct RDP groups.
+
+### Step 9: Apply and Update Group Policy
+
+To immediately apply new policy settings and ensure **User Rights Assignments** take effect.
+
+- Boot up the client VM.
+- Sign in with an account that is permitted to use the **Command Prompt**
+- Open the Command Prompt.
+- Execute the following command: ```gpupdate /force``` to update the newly created GPOs
+- Reboot the client VM.
+
+### Step 10: Test Remote Desktop Connectivity
+
+In this final step, we are going to validate that the configuration of **Remote Desktop** is functioning correctly and only authorized users can connect.
+
+1. Boot up the Domain Controller VM and login.
+2. Open **Remote Desktop Connection** by searching for it in the search bar.
+3. The window will pop up where you need to provide the **Computer Name** of the client machine and the username of the user you want to sign in with.
+    - **Computer Name**: CLIENT1
+    - **Username**: DOMAINNAME\USERNAME (e.g JOTEWODOMAIN\\hd-jdudley)
+4. Click **Connect** and enter the password for the **Domain Admin** or the **Help Desk** user. 
+5. If configured properly, the connection to the client machine should succeed and you should be logged in with the Admin or help desk account!
+
+![Step10](./images/RDPStep10.png)
+![Step10b](./images/RDPStep10a.png)
+
+## Conclusion:
+
+Successfully configuring and validating **Remote Desktop Services (RDP)** through **Group Policy** demonstrates centralized access control within the **Active Directory environment**. By enabling RDP, assigning proper user rights, configuring firewall exceptions, and enforcing security group membership, remote access is managed securely and consistently across all domain-joined client machines.
+
+This implementation reflects real-world IT administration practices by enforcing the principle of least privilege, reducing manual configuration, and ensuring scalable, policy-based management of remote support access.
