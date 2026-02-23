@@ -14,7 +14,9 @@ We will complete two major configurations: **NAT Routing** and **DHCP Server**.
 1. **Remote Access(NAT Routing)**:
     - This allows for the Domain Controller to act like a **Router** for the internal network. The usage of NAT allows for the DC's outbound interface to touch the internet, while the internal network remains isolated.
 2. **DHCP Server**:
-    - The **DHCP** role will automatically assign/lease out IP addresses and network settings to all internal client machines. 
+    - The **DHCP** role will automatically assign/lease out IP addresses and network settings to all internal client machines.
+
+---
 
 ## Step 1: Install Remote Access (NAT) and DHCP Server Roles
 1. Open up **Server Manager** > Click **Manage** (top-right) > **Add Roles and Features**.
@@ -24,7 +26,7 @@ We will complete two major configurations: **NAT Routing** and **DHCP Server**.
 5. Continue clicking **Next** until you reach the **Confirmation** Page, then click **Install**.
 6. Wait for the installation to finish and then close the window
 
-![DHCP_Remote](./screen-recordings/DHCP1.gif)
+![DHCP_Remote]/screen-recordings/DHCP1.gif)
 
 ## Step 2: Enable NAT Routing
 1. Open **Routing and Remote Access** from **Tools** in Server Manager.
@@ -52,7 +54,7 @@ The purpose of a **DHCP Scope** is to define a range of IP addresses that client
 
 These values for the start and end IP addresses with the subnet mask indicate that there will be a range of 100 different IP addresses that the **DHCP Server** has to assign to client machines within the network. The **Subnet Mask** of 255.255.255.0 is to seperate an IP address into a network portion and host portion where the first three octets(172.16.0) identifies the network and the last octet is for identifying individual devices. You can make the comparison to street addresses, where the street name is the network portion and the house number is the host portion.
 
-![DHCP](./images/DHCP2.png)
+![DHCP](/images/DHCP2.png)
 5. Then, you will be given the option to **Add Exclusions and Delay** to IP Addresses. Skip this by clicking 'Next'
 6. For the **Lease Duration** section of the setup, you can define how many days, hours, and minutes a client can use the assigned IP Address. You can set it for a week as an example. 
 7. Click "Yes" when on the **Configure DHCP Options** section to configure the options now.
@@ -61,11 +63,11 @@ These values for the start and end IP addresses with the subnet mask indicate th
 10. Continue to click "Next" until you reach a section where it asks if you want to activate the scope now. Select "Yes" > "Next" > then click "Finish".
 11. Finally, right-click on the domain name and click **"Authorize"** > right-click again and select **"Refresh"** to update the DHCP Servers.
 
-![DHCP_Setup](./screen-recordings/DHCP3.gif)
+![DHCP_Setup](/screen-recordings/DHCP3.gif)
 
 Now, you should see the scope that you created is **Active** and appears under the IPv4 option!
 
-![DHCP_IP](./images/DHCP3.png)
+![DHCP_IP](/images/DHCP3.png)
 
 
 ## Summary

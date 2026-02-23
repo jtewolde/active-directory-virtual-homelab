@@ -26,7 +26,7 @@ In this section, I will set up **Active Directory Domain Services (AD DS)** on t
 8. Continue clicking **Next** until you reach the **Confirmation** Page, then click **Install**.
 7. Wait for the installation to finish and then close the window.
 
-![ActiveDirectory](./screen-recordings/Active1.gif)
+![ActiveDirectory](/screen-recordings/Active1.gif)
 
 ## Step 2: Promote the Server to a Domain Controller
 
@@ -47,7 +47,7 @@ Now that the **Domain Controller** is fully configured, the next step is to orga
 2. On the left side panel, right-click on your domain > Hover over **New** > Select **Organizational Unit**. Name the organizational unit, **_ADMINS**. This OU will store and manage all adminstrative accounts.
 3. Create another organization unit for users, name the OU, **_USERS**.
 
-![ActiveDirectory](./screen-recordings/Active4.gif)
+![ActiveDirectory](/screen-recordings/Active4.gif)
 
 ## Step 4: Create Admin and User Account
 1. Start by right-clicking the newly created **Admins** OU.
@@ -77,7 +77,7 @@ Now, your new account will have full domain administrative privileges!
 
 To test it out, sign out and log back in with the new account, you should have access to Active Directory like before!
 
-![ActiveDirectory](./screen-recordings/Active6.gif)
+![ActiveDirectory](/screen-recordings/Active6.gif)
 
 ---
 

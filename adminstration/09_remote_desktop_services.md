@@ -1,5 +1,7 @@
 # Remote Desktop Services(RDP) Configuration
 
+---
+
 ## Objective:
 
 This section demonstrates how **Remote Desktop Services(RDP)** is configured within an **Active Directory environment** to allow authorized adminstrators and Help Desk users to remotely access domain-joined client machines.
@@ -41,7 +43,7 @@ In this lab, I will demonstrate how to:
 
 Because the client machine is joined to the **Active Directory** domain, **Remote Desktop settings** are controlled by **Group Policy Objects (GPOs)**. Domain-level policies override local system settings, preventing Remote Desktop from being enabled locally on the client machine.
 
-![ClientRDP](./screen-recordings/ClientRDP1.gif)
+![ClientRDP](/screen-recordings/ClientRDP1.gif)
 
 ### Step 2: Add Authorized Users to the Built-In Remote Desktop Users Group
 
@@ -59,7 +61,7 @@ Adding groups here allows centralized control of RDP access and will later be en
     - **Help Desk Users** or your help desk security group
 7. Click **Apply** to save these changes.
 
-![RDP1](./screen-recordings/RDPGroupCreation.gif)
+![RDP1](/screen-recordings/RDPGroupCreation.gif)
 
 **The built-in Remote Desktop Users group:**
 
@@ -86,7 +88,7 @@ To centrally manage **RDP Access**, a **Computer-Based GPO** will be used to ens
 4. Name the following GPO: **Allow Remote Desktop Access**.
 5. Click **"OK"** to confirm the GPO creation.
 
-![RDP3](./screen-recordings/RDP3.gif)
+![RDP3](/screen-recordings/RDP3.gif)
 
 ### Step 4: Enable Remote Desktop Connections via GPO
 
@@ -99,7 +101,7 @@ Domain-joined computers rely on **Group Policy** to control RDP behavior. Enabli
 3. Locate the following policy: **"Allow users to connect remotely using Remote Desktop Services."**
 4. Set the policy to **Enabled**. This will allow computers to enable Remote Desktop Access and connections to be made.
 
-![RDP4](./screen-recordings/RDP4.gif)
+![RDP4](/screen-recordings/RDP4.gif)
 
 ### Step 5: Allow log on through Remote Desktop Services
 
@@ -118,7 +120,7 @@ By assigning this right to the **Remote Desktop Users Security Group**, you:
 3. Check the **Define these policy settings** checkbox to add groups.
 4. Add the **Remote Desktop Users Group** that you created earlier in Step 0 that contains help desk users and domain admins.
 
-![RDP7](./screen-recordings/RDPStep5.gif)
+![RDP7](/screen-recordings/RDPStep5.gif)
 
 ### Step 6: Ensure No Deny Policy Conflicts
 
@@ -144,7 +146,7 @@ Inside of the same GPO you created:
     - Select this setting: **Windows Defender Firewall: Allow inbound Remote Desktop exceptions**.
 2. Enable this setting wo allow computers in the network to receive Remote Desktop connection requests by opening **TCP Port 3389**.
 
-![RDP6](./screen-recordings/RDP6.gif)
+![RDP6](/screen-recordings/RDP6.gif)
 
 ### Step 8: Enforce Group Membership using Restricted Groups
 
@@ -161,7 +163,7 @@ The purpose of configuring this policy is to automatically manage and enforce me
     - **Any Help Desk Group**
 7. After adding those groups, click **OK** to close the box to complete the addition of these groups to the **Remote Desktop Users Group**.
 
-![Step8](./screen-recordings/RDPStep8.gif)
+![Step8](/screen-recordings/RDPStep8.gif)
 
 This ensures every client machine automatically includes the correct RDP groups.
 
@@ -187,8 +189,8 @@ In this final step, we are going to validate that the configuration of **Remote 
 4. Click **Connect** and enter the password for the **Domain Admin** or the **Help Desk** user. 
 5. If configured properly, the connection to the client machine should succeed and you should be logged in with the Admin or help desk account!
 
-![Step10](./images/RDPStep10.png)
-![Step10b](./images/RDPStep10a.png)
+![Step10](/images/RDPStep10.png)
+![Step10b](/images/RDPStep10a.png)
 
 ## Conclusion:
 

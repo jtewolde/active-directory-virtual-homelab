@@ -36,7 +36,7 @@ In this lab, I will demonstrate how to configure the following group policies:
 4. Expand **Forest** > **Domains** > **Your Domain Name**.
 5. You will see under your domain that the **Organizational Units** you created earlier will appear.
 
-![GroupPolicy](./screen-recordings/GroupPolicy1.gif)
+![GroupPolicy](/screen-recordings/GroupPolicy1.gif)
 
 Next, I will be showing how to create GPOs for different policies to be applied to all standard users in the domain. All of the policies can either be applied to a single **GPO Object** for convienence or created separately for easier reusability across other OUs. For these examples, I will create a seperate GPO for each of them.
 
@@ -46,7 +46,7 @@ Next, I will be showing how to create GPOs for different policies to be applied 
 2. Select **"Create a GPO in this domain, and Link in here..."**
 3. Name the **GPO** the policy you want to enforce.
 
-![GPO](./images/GPO1.png)
+![GPO](/images/GPO1.png)
 ---
 
 ## GPO 1: Disable Command Prompt for Users
@@ -64,7 +64,7 @@ This policy prevents standard users from accessing the Command Prompt, reducing 
 
 The **Group Policy Management Editor** window will appear on your screen. On the left side, the "Disable Command Prompt" GPO will have two main configuration types: **Computer Configuation** and **User Configuration**. Each of these contains two subcategories called **Policies** and **Preferences**, which define how settings are applied.
 
-![GPO](./images/GPO2.png)
+![GPO](/images/GPO2.png)
 
 - **Computer Configuration:** These settings are applied to the computer itself, regardless of which user logs in. They are processed when the system starts.
     - **Example:** Disabling USB storage devices on all company computers so no user can plug in a flash drive.
@@ -88,7 +88,7 @@ The **Group Policy Management Editor** window will appear on your screen. On the
 4. Select the **Enabled** option and click **Apply** > **OK** to enforce the policy on the GPO.
 5. Set **Disable command prompt script** processing to **Yes**.
 6. Close the editor.
-![CommandPrompt](./screen-recordings/CommandPrompt.gif)
+![CommandPrompt](/screen-recordings/CommandPrompt.gif)
 
 ---
 
@@ -110,7 +110,7 @@ This policy enforces strong password complexity, expiration, and account lockout
 6. For this lab, we will only configure the **"Password must meet the complexity requirements"**.
 7. Double-click on the policy > Select **Enabled** > Click **Apply**.
 
-![Password](./screen-recordings/PasswordPolicy.gif)
+![Password](/screen-recordings/PasswordPolicy.gif)
 
 ### Steps: Enforce Account Lockout Policy
 
@@ -141,7 +141,7 @@ This policy blocks the use of USB storage devices on domain computers to prevent
     - **All Removable Storage Classes: Deny all access**
 5. Close the editor.
 
-![USB_Devices](./screen-recordings/USB_Devices.gif)
+![USB_Devices](/screen-recordings/USB_Devices.gif)
 
 ---
 
@@ -155,7 +155,7 @@ This policy automatically maps network drives for users at logon, providing cons
 1. Create a **GPO** named **"Map Network Drives"** inside of the **_USERS** OU > Right-Click on the GPO and select **Edit**.
 2. Navigate to: **User Configuration** > **Preferences** > **Windows Settings** > **Drive Maps**.
 3. Right-Click on the **Drive Maps** menu and click **New** > **Mapped Drive**.
-![NetworkDrive](./screen-recordings/NetworkDrive1.gif)
+![NetworkDrive](/screen-recordings/NetworkDrive1.gif)
 
 4. To create a shared network drive, configure the following properties:
     - **Action:**: Create
@@ -166,7 +166,7 @@ This policy automatically maps network drives for users at logon, providing cons
 
 As a result, all users in the **_USERS** OU will automatically receive a mapped network drive at logon.
 
-![NetworkDrive](./images/NetworkDrive2.png)
+![NetworkDrive](/images/NetworkDrive2.png)
 
 ---
 
@@ -201,7 +201,7 @@ After completing all verification steps, this GPO can be re-enabled to enforce s
 3. Run the following command in the terminal.
 ```gpupdate /force```
     - You should see this output as a result to confirm the changes have been made:
-    ![GPOUpdate](./images/ForceCommandPrompt.png)
+    ![GPOUpdate](/images/ForceCommandPrompt.png)
 4. Log out and log back in when prompted.
 
 ##### Step 2: Verify Applied Group Policies
@@ -213,14 +213,14 @@ To confirm which policies are applied to the user and computer:
 ```gpresult /r```
 3. Verify that the configured GPOs appear under **Applied Group Policy Objects** for both the user and the computer.
 
-![gpresult](./images/GPResult.png)
+![gpresult](/images/GPResult.png)
 
 ##### Step 3: Test Each GPO
 
 - GPO: **Disable Command Prompt**
     - Attempt to open **Command Prompt** as a standard user
     - **Expected Result:** Message saying that "The command prompt has been disabled by your adminstrator."
-![DisableCMD](./images/DisableCMD.png)
+![DisableCMD](/images/DisableCMD.png)
 
 - GPO: **Enforce Password and Account Lockout Policies**
 
@@ -229,7 +229,7 @@ To confirm which policies are applied to the user and computer:
     - Enter an incorrect password multiple times.
     - **Expected Result:** Account becomes locked after reaching the configured threshold.
 
-![AccountLockout](./images/AccountLockout.png)
+![AccountLockout](/images/AccountLockout.png)
 
 - GPO: **Disable USB Storage Devices**
     - Insert a USB flash drive into the client machine
@@ -239,12 +239,12 @@ To confirm which policies are applied to the user and computer:
     - Log out and log back in
     - Open **File Explorer** > **This PC**.
     - **Expected Result:** You should see the newly mapped network drive appearing on the bottom of the window, under **Network Locations**.
-    ![NetworkMap](./screen-recordings/NetworkDriveTest.gif)
+    ![NetworkMap](/screen-recordings/NetworkDriveTest.gif)
 
 - GPO : **Enforce Universal Desktop Wallpaper**
     - Login as a domain user
     **Expected Result:** The desktop wallpaper should match the enforced image that you selected when creating the GPO.
-    ![DesktopWallpaper](./images/UniversalDesktop.png)
+    ![DesktopWallpaper](/images/UniversalDesktop.png)
 
 ##### Step 4: Troubleshooting (If Needed)
 

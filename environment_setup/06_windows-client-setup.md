@@ -1,10 +1,13 @@
 # Windows 10 Client VM Setup and Joining to Domain
+---
 
 ## Objective:
 
 In this section, I will demostrate how to create a **Windows 10 or 11 Client Virtual Machine** inside **VirtualBox**, configure it for the internal network, and join it to the **Active Directory Domain** that was previously set up on the Windows Server 2022 Domain Controller.
 
 By doing this, this allows the client machine to authenicate against the domain, receive **Group Policies**, and operate like a workstation inside a real enterprise environment.
+
+---
 
 ## Step 1: Create the Windows 10/11 Virtual Machine
 1. Open VirtualBox > Click **'New'**
@@ -17,7 +20,7 @@ By doing this, this allows the client machine to authenicate against the domain,
     - **Hard Disk**: Select 'Create a virtual hard disk' > Set to 50GB or more
 3. Click 'Finish'
 
-![ClientMachine](./screen-recordings/Client1.gif)
+![ClientMachine](/screen-recordings/Client1.gif)
 
 ## Step 2: Configure Network Settings for Domain Connectivity
 For this step, we need to adjust the network settings on the **Windows Client VM** by disabling **NAT** and restricting internet access within our local network. The purpose of this is to make the Client VM connect to the internet through the **Domain Controller** by obtaining an IP Address through **DHCP**. Here is what to do for configuring the network settings:
@@ -30,7 +33,7 @@ For this step, we need to adjust the network settings on the **Windows Client VM
 
 Make sure that there are no network adapters that use **NAT** as we want the client VM to connect through the Internal Network.
 
-![Client](./images/Client2.png)
+![Client](/images/Client2.png)
 
 ## Step 3: Install Windows 10 on the Client VM
 1. Click on the newly created Server 2022 VM and boot it up.
@@ -56,7 +59,8 @@ Let's test out and see if the Windows Client VM is connected with the internal n
 ipconfig
 ```
 3. The terminal will respond with your current network info. Your network info should look similar to this:
-![Client](./images/Client3.png)
+![Client](/images/Client3.png)
+
 As you can see in the screenshot above, the **IP Address** that has been leased out to the client VM is **172.16.0.100**, which falls under the DHCP lease pool of the Domain Controller that we configured earlier. The same can be said for the **Subnet Mask** and **Default Gateway**. This means that the client VM is successfully connected with the internal network.
 
 If you don't see any output for the **Default Gateway** or the **IP Address**, try running ```ipconfig /renew ```. Otherwise, backtrack to the DHCP Setup document and make sure nothing was missed during the configuration.
@@ -66,7 +70,7 @@ If you don't see any output for the **Default Gateway** or the **IP Address**, t
     - ```ping "enter domain here"``` - **Connection to Domain**
     - If successful, you should get 4 replys to indicate packets of data are being sent and received.
 
-![ClientNetwork](./screen-recordings/Client4.gif)
+![ClientNetwork](/screen-recordings/Client4.gif)
 
 ## Step 5: Join the Client to the Domain
 
@@ -80,8 +84,8 @@ If you don't see any output for the **Default Gateway** or the **IP Address**, t
 6. Once you entered the information, click **Enter** and you should see a message, welcoming the user into the domain.
 7. Then, you will be asked to restart the computer to confirm changes.
 
-![Client](./screen-recordings/Client5.gif)
-![Client](./images/Client6.png)
+![Client](/screen-recordings/Client5.gif)
+![Client](/images/Client6.png)
 
 ## Step 8: Log in using a Domain User
 After your computer restarts and you're on the login screen:
@@ -92,7 +96,7 @@ After your computer restarts and you're on the login screen:
 
 If successful, Windows should be setting up the user and the client machine will be joined and communicating with **Active Directory**.
 
-![ClientUser](./screen-recordings/Client7.gif)
+![ClientUser](/screen-recordings/Client7.gif)
 
 ## Step 6: Verify IP Address Lease from DHCP
 Finally, let's ensure that the Windows Client is properly receiving an **IP Address** from the Domain Controller.
@@ -106,7 +110,7 @@ Finally, let's ensure that the Windows Client is properly receiving an **IP Addr
     - **Client VM's Hostname**: CLIENT1@domainname.com
     - **Lease Expiration Date**: 12/16/2025
 
-![ClientVM](./images/Client7.png)
+![ClientVM](/images/Client7.png)
 
 This confirms that the DC is correctly acting as the DHCP server for the internal network.
 
@@ -114,7 +118,7 @@ This confirms that the DC is correctly acting as the DHCP server for the interna
 
 Your Windows Client VM is now successfully networked, receiving IP configuration from DHCP, and joined to your Active Directory domain. This completes the client-side setup and prepares your environment for further enterprise-level configurations such as User Account Management, Group Policy, file sharing, security baselines, and workstation management.
 
-➡️ Continue to: **[User Account Management (Help Desk Operations)](./06_user_account_management.md)**
+➡️ Continue to: **[User Account Management (Help Desk Operations)](/adminstration/07_user_account_management.md)**
 
 
 

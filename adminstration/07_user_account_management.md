@@ -34,7 +34,7 @@ All actions in this section are performed using **Active Directory Users and Com
     - The option will be greyed out if the password is set to never expire.
 5. Click **OK** to finalize changes
 
-![ResetPassword](./screen-recordings/ResetPassword.gif)
+![ResetPassword](/screen-recordings/ResetPassword.gif)
 
 
 **Verification:**
@@ -44,7 +44,7 @@ All actions in this section are performed using **Active Directory Users and Com
 
 
 
-![ResetPasswordClient](./screen-recordings/ResetPassword2.gif)
+![ResetPasswordClient](/screen-recordings/ResetPassword2.gif)
 
 ## Ticket 2: Unlocking a Locked Account
 
@@ -64,9 +64,9 @@ All actions in this section are performed using **Active Directory Users and Com
 - On the **Window Server VM**, follow the steps above to unlock the account.
 - If successful, the user's account will be unlocked and they will be able to sign in.
 
-![UnlockAccount](./images/Unlock3.png)
-![UnlockAccount](./screen-recordings/Unlock1.gif)
-![UnlockAccount](./screen-recordings/Unlock2.gif)
+![UnlockAccount](/images/Unlock3.png)
+![UnlockAccount](/screen-recordings/Unlock1.gif)
+![UnlockAccount](/screen-recordings/Unlock2.gif)
 
 ## Ticket 3: Disabling an User's Account
 
@@ -77,12 +77,12 @@ All actions in this section are performed using **Active Directory Users and Com
 2. Select **Disable Account** option.
 3. The account's icon will now have a downward arrow.
 
-![DisableAccount](./screen-recordings/Disable1.gif)
+![DisableAccount](/screen-recordings/Disable1.gif)
 
 **Verification:**
 - First, disable the account that you want to test on the **Client VM**.
 - Verify that when you try to sign in to the account, the account is disabled.
-![DisableAccount](./images/Disable2.png)
+![DisableAccount](/images/Disable2.png)
 
 
 ## Ticket 4: Re-enable an User's Account
@@ -107,7 +107,7 @@ All actions in this section are performed using **Active Directory Users and Com
 2. Drag the user to the appropriate organizational unit or right-click on the user and select **"Move"**. A window will appear that has all of the organizational units in the domain > Select the OU that this appropriate for the user.
 3. Confirm the move.
 
-![Move1](./screen-recordings/Move1.gif)
+![Move1](/screen-recordings/Move1.gif)
 
 ## Conclusion:
 

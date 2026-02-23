@@ -30,14 +30,14 @@ The Domain Controller will have **two network adapters** configured in VirtualBo
 2. Once logged in, go down to the search bar on the task bar and enter **Network Status**. An option should appear and click on it.
 3. Then, navigate down to **Advanced Network Settings** and click on **Change Adapter Options** and a window should appear.
 
-![AdapterGif](./screen-recordings/Network1.gif)
+![AdapterGif](/screen-recordings/Network1.gif)
 
 4. In the window, there should be two network adapters, named, **Ethernet 1** and **Ethernet 2**.
 5. Next, we need to identify which adapter is the NAT and the Internal Network and then rename them to reflect that.
 6. Right-Click on either adapter > Status > Details. Look at the **IPv4 Address** and see what the address begins with. If the address starts with '169', it indicates that this connection doesn't have any internet access, which means that this is the **Internal Network**. If not, then it is the NAT Adapter.
 7. Rename both of the adapters to differentiate which of them are the Internet and which is the Internal Network
 
-![Adapters](./images/NetworkAdapters.png)
+![Adapters](/images/NetworkAdapters.png)
 
 8. Now, right-click on the **Internal Network** Adapter > Select **Properties** > Click on **Internet Protocol Version 4 (TCP/IPv4)** → **Properties**.
 9. Set the following values:
@@ -51,7 +51,7 @@ The Domain Controller will have **two network adapters** configured in VirtualBo
 
 10. Click **'OK'** to apply those changes
 
-![StaticIP](./images/Network2.png)
+![StaticIP](/images/Network2.png)
 
 ## Step 3: Test Network Connectivity
 

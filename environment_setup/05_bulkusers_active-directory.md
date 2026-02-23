@@ -1,4 +1,5 @@
 # Creating Bulk Active Directory Users with PowerShell
+---
 
 ## Objective:
 
@@ -12,6 +13,8 @@ For this lab, I used a bulk-import PowerShell Script from **Josh Madakor's Activ
 - **YouTube Link:** https://www.youtube.com/watch?v=MHsI8hJmggI&t=1921s
 - **PowerShell Script Download**: https://github.com/joshmadakor1/AD_PS/archive/refs/heads/master.zip
 
+---
+
 ## Step 1: Download the User Creation Script on Domain Controller
 
 To create bulk users, you need to download **Josh Madakor's PowerShell Script** and user list.
@@ -21,7 +24,7 @@ To create bulk users, you need to download **Josh Madakor's PowerShell Script** 
 3. Click on the 'ON' Switch and a window should pop up to turn off the security configuration for both users and admins.
 4. Turn off **IE ESC** for both users and admins temporarily to allow downloads.
 
-![PowerShell](./screen-recordings/PS1.gif)
+![PowerShell](/screen-recordings/PS1.gif)
 
 5. Open **Internet Explorer** or **Microsoft Edge** > Copy and paste the **PowerShell Script Download Link** mentioned above or here to download the folder:
     - https://github.com/joshmadakor1/AD_PS/archive/refs/heads/master.zip
@@ -29,7 +32,7 @@ To create bulk users, you need to download **Josh Madakor's PowerShell Script** 
 7. Extract the downloaded ZIP folder to access the contents inside.
 8. Inside the **AD_PS-master** folder, there will be 4 files inside, we are only going to interact with two of them. One being the **"names.txt"** file and the PowerShell File, **"1_CREATE_USERS"**.
 
-![PowerShell](./images/PS2.png)
+![PowerShell](/images/PS2.png)
 
 Inside of the **"names.txt"** file, you will find hundreds of sample names that will be used to create sample user accounts in Active Directory. You can add some other names to the text file that you are familar with to create accounts as well.
 
@@ -45,7 +48,7 @@ Next, the **1_CREATE-USERS** script needs to be opened and inside of **PowerShel
 
 The **1_CREATE_USERS.ps1** PowerShell script automates the creation of bulk Active Directory users for lab or enterprise simulation. It reads first and last names from a **names.txt** file, generates usernames in the format first initial + last name, and creates each account inside a new OU called **_USERS**. Each user is assigned a default password (**Password1** by default), set so the password never expires, and enabled automatically. The script also handles generating secure strings for the password and provides on-screen status messages while creating each account.
 
-![CreateUsers](./images/PS3.png)
+![CreateUsers](/images/PS3.png)
 
 ## Step 3: Allow Script Execution
 By default, PowerShell will block this script due to execution policy restrictions. In order to resolve this:
@@ -63,14 +66,14 @@ Now, this authorizes PowerShell to run the script to create users in Active Dire
 1. Click the **Run** button(Green Play Icon) in **PowerShell ISE**.
 2. PowerShell will start to generate users automatically, you should see cyan text saying, "creating user: (user)".
 
-![PowerShell](./images/PS5.png)
+![PowerShell](/images/PS5.png)
 
 3. After the script is done running, check if the users were created in Active Directory under the **_USERS** OU.
     - Open **Server Manager** > **Tools** > **Active Directory Users and Computers**
 4. Navigate to the **organizational unit** created by the script(**_USERS**)
 5. If successful, you should see hundreds of newly created accounts were added to Active Directory!
 
-![NewUsers](./screen-recordings/PS6.gif)
+![NewUsers](/screen-recordings/PS6.gif)
 
 This wraps up the process of generating bulk Active Directory users using PowerShell. With dozens of realistic accounts now added to your domain, your homelab now mirrors a real enterprise environment—complete with an organizational structure and user base to manage. 
 
