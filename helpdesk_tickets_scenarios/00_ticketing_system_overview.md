@@ -131,13 +131,28 @@ After project creation, configure the basic settings.
 
 #### Configure Request Types
 
-While still under **Space Settings**, navigate to **Request Management** > **Request Types** > **Service Requests**.
+Request types determine how users submit support requests through the help desk portal.
+
+To configure request types:
+
+1. While still under **Space Settings**, navigate to **Request Management** > **Request Types** > **Service Requests**.
+2. Click **Create Request Type** > **Create blank**.
+3. Provide a **Name, Description, and Icon** for the request type.
+4. Select which **Portal Groups** this request falls under.
+5. Customize the fields users must fill out when submitting the request.
+6. Finally, select the appropriate **Work Type** (e.g. Service Request, Incident, Access Request)
+
+![RequestCreation](/screen-recordings/RequestCreation.gif)
 
 Here, you can add new request types for tickets/issues like:
 - Password Resets
 - Account Unlock
 - Remote Desktop Issue
 - Network Connectivity Issue
+
+![RequestType](/images/RequestType.png)
+
+
 
 
 
