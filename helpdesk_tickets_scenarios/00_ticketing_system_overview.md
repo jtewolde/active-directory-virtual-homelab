@@ -85,9 +85,6 @@ Below are the core properites configured and used in this lab.
 - Defines urgency and impact. Common levels include: **Highest, High, Medium, Low, and Lowest**.
 - **Purpose:** Helps IT teams allocate resources and respond according to business impact.
 
-##### Urgency:
-- 
-
 ##### Status:
 - Indicates where the ticket is in its lifecycle:
     - **Open**
@@ -113,8 +110,6 @@ Below are the core properites configured and used in this lab.
 5. Select the **IT Service Management** template.
 
 This creates a structured help desk project with predefined workflows.
-
----
 
 ### Step 2: Project Configuration
 
@@ -152,16 +147,79 @@ Here, you can add new request types for tickets/issues like:
 
 ![RequestType](/images/RequestType.png)
 
+---
 
+## Part 2: Creating and Managing Tickets
 
+### Step 1: Create a Ticket
 
+1. Click the blue **Create** button that is on the header.
+2. Select the Service Management project that you created.
+3. Choose the **Work Type** for this ticket (e.g. Service Request).
+4. Select the **Request Type** that fits the ticket best.
+5. Fill in the necessary information:
+    - **Summary**
+    - **Description**
+    - **Attachments**(e.g. Screenshots)
+    - **Organization**
 
+The system will generates a unique Issue Key and a new ticket will appear in the ticket queue after refreshing the page.
 
+![CreateTicket](/screen-recordings/CreateTicket.gif)
 
+---
 
+### Example Ticket for Installing New Software:
 
+- **Space:** Support(e.g. Name of space)
+- **Work Type:** Service Request
+- **Request Type:** Request new software
+- **Summary:** User needs Adobe license and software installed on their workstation
+- **Reason Why:** The end user uses Adobe frequently for their job.
 
+---
 
+### Step 2: Assign and Begin Work
 
+1. Be in the **Ticket Queue** page of your Jira project.
+2. Open the ticket by clicking the ticket's key or summary to see more details.
+3. To assign a ticket to a techincian or yourself, hover over the **Assignee** field in the **Details** section on the right side of the page.
+4. To change the status of the ticket, click on the blue button above the details section and select the status that best represents its status.
+    - By default, the status of the ticket will be **Waiting for support**.
+5. After changing the status, a modal will appear to add **Internal comments** about the ticket or directly reply to the end user to provide an update.
 
+![TicketAssign](/screen-recordings/TicketAssign.gif)
 
+### Step 3: Resolve and Close:
+
+1. After resolving the requester's ticket, change the status of the ticket to **Resolved**.
+2. A modal will open to add resolution notes for the ticket like:
+    - **Resolution:** How the issue was resolved(Done, Won't Do, Declined, Duplicate)
+    - **Linked Issues:** Whether the ticket is linked to any issues previously.
+    - **Issue:** Specifiy the issue that is linked to current ticket.
+    - **Comments:** Add internal notes on ticket and/or reply to the customer
+3. Click **Resolve this issue** button to finalize changes.
+4. The ticket will now be marked as **"Resolved"** and it will disappear from the ticket queue.
+
+![ResolveTicket](/images/ResolveTicket.png)
+
+---
+## Skills Demonstrated
+
+This lab demonstrates several key skills relevant to IT Support and Help Desk roles:
+
+- Configuring and operating a **Jira Service Management** project
+- Managing the full **ticket lifecycle** including creation, assignment, status updates, and resolution
+- Categorizing and prioritizing support requests using **request types and priority levels**
+- Documenting troubleshooting steps and resolution notes within tickets
+- Understanding structured **IT support workflows** used in professional help desk environments
+
+These skills reflect common responsibilities of IT technicians who rely on ticketing systems to track, organize, and resolve user issues.
+
+## Conclusion
+
+This lab demonstrated the setup and use of **Jira Service Management** within a simulated IT support environment.
+
+By configuring request types, creating service tickets, and managing them through the resolution process, this project replicates how IT teams handle user requests in real-world help desk operations.
+
+The exercise reinforces the importance of structured workflows, proper documentation, and accountability when managing technical support issues.
