@@ -98,6 +98,7 @@ Each document below covers a specific phase of the Active Directory homelab and 
 | 2026-02-20 | Remote Desktop Services – Restricted Groups Enforcement | Successfully configured and secured Remote Desktop access for Help Desk users by enabling RDP via Group Policy, assigning “Allow log on through Remote Desktop Services” rights, and enforcing membership of the local Remote Desktop Users group using Restricted Groups. Resolved prior logon type and authorization errors, verified firewall rules for TCP 3389, and validated successful remote access from the Domain Controller to the client machine. |
 | 2026-02-22 | Jira Ticketing System Creation | Created a Jira Service Management System for practicing, writing, and resolving tickets that would appear in a real world scenario in a IT Support role. |
 | 2026-03-05 | Jira Service Management – Request Type Configuration | Configured multiple request types within the Jira Service Management project to simulate common IT Help Desk scenarios such as password resets, account unlocks, software installation requests, and remote access issues. This improves ticket categorization and mirrors structured request intake processes used in enterprise IT environments. |
+| 2026-03-13 | Jira Service Management - Customers Creation | Created multiple practice end users in the Jira Service Management Support Space in order to simulate real enterprise tickets in future helpdesk ticket documents. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
