@@ -93,6 +93,8 @@ In this case, the user is not in the security group.
 2. Enter the name of the security group that the user need to be in to access the network drive. With this user's problem, they need to be added to the **HR Department Security Group**.
 3. Click **Apply** and **OK** to update group membership.
 
+![AddUserHRDrive](/images/AddHRNetworkDrive.png)
+
 This granted the user the required permissions to access the shared network drive.
 
 #### Step 4 - Refresh User Group Policies
@@ -103,4 +105,54 @@ To apply the changes immediately, the following command was executed on the user
 
 This refreshed the user's group memberships and applied updated permissions.
 
+---
 
+## Customer Communication
+
+After updating the user's permissions, a response was provided through the Jira ticket to notify the user to try again with accessing the **HR Department Network Drive** from their end.
+
+![ReplyCustomerMessage](/images/ReplyCustomer2.png)
+
+---
+
+## Verification
+
+The user attempted to access the network drive afer the permissions were updated.
+
+The following results confirmed successful resolution:
+
+- The user was able to open the shared network drive.
+- All folders and files within the department share were accessible.
+- No further access errors were reported.
+
+![NetworkdriveSuccess](/screen-recordings/NetworkDriveSuccess.gif)
+
+---
+
+## Ticket Resolution
+
+Once the user confirmed successful access to the shared network drive, the issue was marked as resolved in Jira Service Management.
+
+The ticket status was updated from **In Progress → Resolved**.
+
+---
+
+## Ticket Closure
+
+After confirming that the user was able to access the network drive without issues, the ticket was closed.
+
+Final documentation was added to the ticket describing the troubleshooting process and resolution steps.
+
+The ticket status was updated to **Closed** to indicate that the issue had been fully resolved.
+
+---
+
+## Conclusion
+
+This ticket demonstrates a common IT support issue involving network drive access within an Active Directory environment. By reviewing shared folder permissions and verifying the user's group membership, the issue was quickly identified and resolved.
+
+The troubleshooting process involved checking Active Directory security groups, updating user permissions, and verifying that the changes were applied successfully on the user's workstation.
+
+The issue was documented and tracked using **Jira Service Management**, demonstrating the full help desk ticket lifecycle including ticket creation, assignment, investigation, customer communication, verification, and final resolution.
+
+This scenario highlights important IT support skills such as **Active Directory administration, file share permission management, troubleshooting network access issues, and maintaining clear technical documentation.**
