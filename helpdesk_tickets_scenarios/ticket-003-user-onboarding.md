@@ -106,3 +106,48 @@ The following confirmations were made:
 - Login to the domain was successful
 - Password change prompt appeared at first login
 - Access to the Finance network drive was verified
+
+![OnBoardingPassword](/screen-recordings/OnboardingPassword.gif)
+
+![OnboardingSuccessLogin](/images/OnboardSuccess.png)
+
+![NetworkDriveSuccess](/screen-recordings/OnboardingNetworkDrive.gif)
+
+---
+
+## Ticket Resolution
+
+After confirming that the user account was fully functional and all required access was granted, the ticket was marked as resolved.
+
+The ticket status was updated from **In Progress → Resolved** in Jira Service Management and internal notes were added to document the entire onboarding process.
+
+---
+
+## Ticket Closure
+
+Once the user confirmed successful access and no further issues were reported, the ticket was closed.
+
+Final documentation was added outlining the onboarding steps and configurations performed.
+
+The ticket status was updated to **Closed**.
+
+---
+
+## Onboarding Process
+
+- [x] User account created in Active Directory  
+- [x] Temporary password set  
+- [x] Forced password change enabled  
+- [x] User added to appropriate security groups  
+- [x] Network drive access configured  
+- [x] User notified with login instructions  
+
+---
+
+## Conclusion
+
+This ticket demonstrates the process of onboarding a new user within an Active Directory environment. The task involved creating a user account, assigning appropriate permissions, and ensuring access to necessary resources such as shared network drives.
+
+The process was managed and documented using **Jira Service Management**, simulating a real-world IT help desk workflow from ticket creation to resolution.
+
+This scenario highlights key IT support skills including **user provisioning, Active Directory administration, security group management, access control configuration, and effective communication with end users.**
