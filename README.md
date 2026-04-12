@@ -100,6 +100,7 @@ Each document below covers a specific phase of the Active Directory homelab and 
 | 2026-03-05 | Jira Service Management – Request Type Configuration | Configured multiple request types within the Jira Service Management project to simulate common IT Help Desk scenarios such as password resets, account unlocks, software installation requests, and remote access issues. This improves ticket categorization and mirrors structured request intake processes used in enterprise IT environments. |
 | 2026-03-13 | Jira Service Management - Customers Creation | Created multiple practice end users in the Jira Service Management Support Space in order to simulate real enterprise tickets in future helpdesk ticket documents. |
 | 2026-04-06 | BitLocker Unlock | Resolved an issue on my own laptop where it ran extremely slow and ultimately crashed. It caused BitLocker to be enable on next powerup and needed to log into my Microsoft account on another device to get the key to unlock BitLocker and have access to my data. |
+| 2026-04-11 | Network Troubleshooting Documentation Start | Started with creating documentation for demonstrating how to resolve issues where users don't have access to the internet. Simulated a common problem in client machine VM where the wrong default gateway is entered, which doesn't allow external websites to be connected to the user. |
 
 ## Tools Used
 - [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads)
