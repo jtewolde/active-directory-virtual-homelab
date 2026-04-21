@@ -63,7 +63,52 @@ This allows direct access to the user’s desktop to troubleshoot the issue.
 
 ![RDPTicket9](/screen-recordings/Ticket009RDP.gif)
 
+## Step 2: Verify IP Configuration
+
+1. Open **Command Prompt** on the client machine.
+2. Run the following command in the terminal to display all current **TCP/IP** network configurations:
+```ipconfig /all```
+3. Review the following configurations:
+    - **IP Address**
+    - **Subnet Mask**
+    - **Default Gateway**
+    - **DNS Server**
+4. Look and identify any problems that could be causing the network issues for the computer.
+    - In the screenshot below, you can see that the **Default Gateway** is incorrect where there is nothing configured. That is the most likely cause of this ticket.
+
+![ipconfig/all](/images/ipconfigAll.png)
+
+## Step 3: Test Network Connectivity
+1. In the command prompt, use the following ping command to test external connectivity:
+    - ```ping 8.8.8.8``` 
+2. If the request runs out, this indicates that the client machine is unable to reach the internet.
+3. Next, test internal network connectivity by pinging the **Domain Controller**:
+    - Example: ```ping 172.16.0.1```
+4. If this ping command is successful, it confirms that:
+    - The client machine can communicate within the internal network.
+    - The issue is specifically related to outbound internet connectivity.
+5. This further supports that the problem is likely due to an incorrect or missing default gateway.
+
+![pingTest](/images/pingTest.png)
+
+## Step 4: Correct Network Configuration
+
+Since the issue was identified as a missing/incorrect default gateway, the next step is to correct the network settings.
+
+In **Command Prompt**, run the following commands:
+- ```ipconfig /release```
+- ```ipconfig /renew```
+
+These commands force the client machine to request a new IP configuration from the **DHCP Server**, including: **IP Address**, **Default Gateway**, and **DNS Server**.
 
 
+### Note: DHCP vs Static IP Configuration:
 
+During troubleshooting, the `ipconfig /release` command may return the following error:
+
+> *“The operation failed as no adapter is in the state permissible for this operation.”*
+
+This typically occurs when the client machine is configured with a **static IP address instead of using DHCP**.
+
+In this homelab scenario, the issue was intentionally created by manually assigning network settings (including an incorrect or missing default gateway). Because of this, the system is not using DHCP, and therefore the `/release` command cannot be executed.
 
