@@ -48,11 +48,26 @@ This suggested that the issue was likely related to **network configuration**, s
 - **Network Services:** DHCP, NAT (Remote Access)  
 - **Ticketing Platform:** Jira Service Management  
 
-To simulate this issue in the homelab environment, the client machine was intentionally configured with an incorrect **default gateway**. This resulted in loss of internet connectivity while still allowing access to internal network resources.
+To simulate a realistic enterprise networking issue, the DHCP Scope on the Domain Controller was intentionally misconfigured by removing the configured **Default Gateway** under: **DHCP Option 003 - Router**.
 
 ---
 
-## Step 1: Remote into User Machine (RDP)
+## Step 1: Simulate the DHCP Network Issue
+
+1. Boot up and log into the **Windows Server 2022 Domain Controller** using adminstrative credentials.
+2. Open **Server Manager** and navigate to the **Tools** section > **DHCP**.
+3. Click on the right arrow next to your domain to expand it > Right-Click on **IPv4** > **"Internal Scope"** > **Scope Options**.
+4. Locate and double-click the following DHCP setting
+    - **003 - Router**
+5. Remove or intentionally misconfigure the **Default Gateway**:
+    - Incorrect example: **172.16.0.99** or leave it blank.
+6. Click **OK** to apply the changes.
+
+This causes client machines to receive invalid routing information from DHCP, preventing internet access.
+
+![DHCPRouter](/screen-recordings/DHCPRouter.gif)
+
+## Step 2: Remote into User Machine (RDP)
 
 1. First, boot up the **Windows Server 2022 Domain Controller** using adminstrative credentials.
 2. Open **Remote Desktop Connection** by entering it in te search bar. 
@@ -63,7 +78,9 @@ This allows direct access to the user’s desktop to troubleshoot the issue.
 
 ![RDPTicket9](/screen-recordings/Ticket009RDP.gif)
 
-## Step 2: Verify IP Configuration
+---
+
+## Step 3: Verify IP Configuration
 
 1. Open **Command Prompt** on the client machine.
 2. Run the following command in the terminal to display all current **TCP/IP** network configurations:
@@ -78,37 +95,48 @@ This allows direct access to the user’s desktop to troubleshoot the issue.
 
 ![ipconfig/all](/images/ipconfigAll.png)
 
-## Step 3: Test Network Connectivity
-1. In the command prompt, use the following ping command to test external connectivity:
-    - ```ping 8.8.8.8``` 
-2. If the request runs out, this indicates that the client machine is unable to reach the internet.
-3. Next, test internal network connectivity by pinging the **Domain Controller**:
-    - Example: ```ping 172.16.0.1```
-4. If this ping command is successful, it confirms that:
-    - The client machine can communicate within the internal network.
-    - The issue is specifically related to outbound internet connectivity.
-5. This further supports that the problem is likely due to an incorrect or missing default gateway.
+---
+
+## Step 4: Test Network Connectivity
+1. In the command prompt, use the following ping command to test external connectivity: ```ping 8.8.8.8``` 
+    - If the request runs out, this indicates that the client machine is unable to reach the internet.
+3. Next, test internal network connectivity by pinging the **Domain Controller**:```ping 172.16.0.1```
+    - If this ping command is successful, it confirms that the client machine is connected within the internal network and can communicate within the **Domain Controller**.
+
+This confirms that the issue is specifically related to outbound routing and internet access.
 
 ![pingTest](/images/pingTest.png)
 
-## Step 4: Correct Network Configuration
+## Step 5: Verify DHCP Configuratin on the Domain Controller
 
-Since the issue was identified as a missing/incorrect default gateway, the next step is to correct the network settings.
+1. Return to the **Windows Server 2022 Domain Controller**.
+2. Open **Server Manager** and navigate to the **Tools** section > **DHCP**.
+3. Navigate to: **IPv4** > **Internal Scope** > **Scope Options**.
+4. Locate and double-click the following DHCP setting
+    - **003 - Router**
+5. Verify that the configured default gateway is incorrect or missing.
+6. Correct the **Default Gateway** to the previous IP Address:
+    - 172.16.0.1
+7. Click **OK** to save the correct configuration.
 
-In **Command Prompt**, run the following commands:
-- ```ipconfig /release```
-- ```ipconfig /renew```
+This ensures all **DHCP** clients receive the proper default gateway for internet routing.
 
-These commands force the client machine to request a new IP configuration from the **DHCP Server**, including: **IP Address**, **Default Gateway**, and **DNS Server**.
+![DHCPFix](/images/DHCPRouter1.png)
 
+## Step 6: Renew DHCP Lease on Client Machine
 
-### Note: DHCP vs Static IP Configuration:
+After correcting the DHCP configuration, the client machine still retains the previous invalid lease.
 
-During troubleshooting, the `ipconfig /release` command may return the following error:
-
-> *“The operation failed as no adapter is in the state permissible for this operation.”*
-
-This typically occurs when the client machine is configured with a **static IP address instead of using DHCP**.
-
-In this homelab scenario, the issue was intentionally created by manually assigning network settings (including an incorrect or missing default gateway). Because of this, the system is not using DHCP, and therefore the `/release` command cannot be executed.
+To request updated network settings:
+1. Return to the client machine through the RDP Session or signing directly into the machine.
+2. Open **Command Prompt** as Adminstrator.
+3. Run the following commands in the terminal:
+    - ```ipconfig /release```: **Removes the current DHCP Lease**
+    - ```ipconfig /renew```: **Requests updated network settings from the DHCP Server**.
+4. Run the following command again: ```ipconfig /all```.
+5. Verify that the following settings are now correct:
+    - **Valid IP Address**
+    - **Correct Subnet Mask**
+    - **Default Gateway:** ```172.16.0.1```
+    - **DNS Server:** ```172.16.0.1```
 
